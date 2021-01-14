@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Row, Col, Card, Image } from 'antd';
-import ImageSlider from '../utils/ImageSlider';
 import '../MainPage/MainPage.css';
 import 'antd/dist/antd.css';
 import '../input.css';
@@ -13,7 +12,7 @@ const contents = [
     { link: '/product/upload', title: '상품등록', 
       description: '새로운 상품을 등록합니다.',
       img: "https://image.flaticon.com/icons/png/512/126/126494.png" },
-    { link: '', title: '고객관리', 
+    { link: '/admin/customer', title: '고객관리', 
       description: '고객 정보를 관리합니다.',
       img: "https://image.freepik.com/free-icon/group-meeting_318-10037.jpg" }
 ];

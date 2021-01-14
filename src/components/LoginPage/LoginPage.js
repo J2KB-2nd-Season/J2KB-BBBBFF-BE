@@ -86,8 +86,8 @@ function LoginPage(props) {
                         </button>
                     </form>
                     계정이 없으신가요? <Link to="/join">회원가입</Link>
-                    <br></br>
-                    <br></br>
+                    <br/>
+                    <br/>
                     비밀번호를 잊어버리셨나요? <Link to="/find/password">비밀번호 찾기</Link>
                 </div>
                 <div className={styles2.info}>

@@ -12,6 +12,7 @@
 }
 .navbar-top::after {
     content: '연말을 완벽하게 보내는 방법! 홀리데이 기프트 추천';
+    font-size: 20px;
 }
 .navbar-middle {
     height: 80px;
@@ -41,6 +42,7 @@
     justify-content: center;
     align-items: center;
     padding-right: 20px;
+    font-size: 20px;
 }
 .right_item ul {
     margin: 0px;

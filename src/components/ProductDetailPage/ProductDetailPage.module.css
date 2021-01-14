@@ -53,10 +53,10 @@
 
 .bigShower {
     position: absolute;
-    background-color: lightpink;
     display: block;
     width: 0;
     height: 0;
+    z-index: 1;
     transition: width 1s, height 1s;
 }
 
@@ -81,18 +81,9 @@
     max-height: 75px;
 }
 
-.calInfo .priceInfo, .productInfo {
+.calInfo {
     width: 400px;
     margin-bottom: 10px;
-}
- 
-.priceInfo, .productInfo {
-    border-bottom: lightgray 1px solid;
-}
-
-.productInfo h3, .priceInfo h3 {
-    font-size: 24px;
-    font-weight: 800;
 }
 
 .calInfo h1 {
@@ -100,33 +91,18 @@
     font-weight: 800;
 }
 
-.lists {
-    list-style: none;
-    padding-left: 0;
-}
 
-.list {
-    display: flex;
-    align-items: center;
-}
-
-.infoTit, .infoContent, .calTit, .calNum {
+.calTit, .calNum {
     all: unset;
     width: 100px;
     display: inline-block;
     font-size: 18px;
 }
 
-.infoContent {
-    width: 300px;
-    font-weight: 600;
-}
-
 .calculator {
     margin-top: 20px;
     width: 400px;
     padding: 10px;
-    outline: 1px solid lightgray;
     display: flex;
     align-items: center;
     margin-bottom: 10px;
@@ -143,21 +119,6 @@
     font-weight: 600;
 }
 
-.minusButton, .plusButton {
-    width: 30px;
-    height: 30px;
-    border-radius: 0;
-    text-align: center;   
-}
-.minusButton {
-    background: url(https://image.flaticon.com/icons/png/512/121/121720.png);
-    background-size: contain;
-}
-.plusButton {
-    background: url(https://image.flaticon.com/icons/png/512/121/121721.png);
-    background-size: contain;
-}
-
 .buttons {
     display: flex;
     justify-content: space-between;
@@ -172,16 +133,14 @@
     outline: 1px solid black;
     color: white;
     font-weight: 600;
-    font-size: 1.2rem;
+    font-size: 20px;
     text-align: center;
 }
 
 .cartButton {
     width: 50px;
     height: 50px;
-    outline: 1px solid lightgray;
+    padding: 5px;
     border-radius: 0;
-    background: url(https://image.freepik.com/free-icon/shopping-cart-1_318-10653.jpg);
-    background-size: contain;
 }
 

@@ -87,6 +87,10 @@ body {
     font-size: 22px;
 }
 
+.inputContainer {
+    margin-bottom: 5px;
+}
+
 .loginButton {
     margin-bottom: 20px;
 }
