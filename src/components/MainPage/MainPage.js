@@ -6,27 +6,14 @@ import 'antd/dist/antd.css';
 import '../input.css';
 import NavBar from '../NavBar/NavBar';
 import { Link }from "react-router-dom";
+import products from "../DeleteThisData/products.json";
+
+{
+    /* 나중에는 products 서버에서 가져옴(더미 데이터) */
+}
 
 const { Meta } = Card;
 
-{
-    /* 나중에는 서버에서 가져옴 */
-}
-const products = [
-    { title: 'J2KB 명함', description: 'J2KB 명함' },
-    { title: '제품2', description: '제품2' },
-    { title: '제품3', description: '제품3' },
-    { title: '제품4', description: '제품4' },
-    { title: '제품5', description: '제품5' },
-    { title: '제품6', description: '제품6' },
-    { title: '제품7', description: '제품7' },
-    { title: '제품8', description: '제품8' },
-    { title: '제품9', description: '제품9' },
-    { title: '제품10', description: '제품10' },
-];
-{
-    /* 나중에는 서버에서 가져옴 */
-}
 
 function Main() {
 
@@ -34,9 +21,9 @@ function Main() {
     const renderCards = products.map((product, index) => {
         return (
             <Col key={index} lg={6} md={8} xs={24}>
-                <Link to={`/product/${product.title}`} >
-                    <Card cover={<ImageSlider />} >
-                        <Meta title={product.title} description={product.description} />
+                <Link to={`/product/${product.num}`} >
+                    <Card cover={<ImageSlider images={product.images}/>} >
+                        <Meta title={product.name} description={product.detail} />
                     </Card>
                 </Link>
             </Col>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Row, Col, Card, Input } from 'antd';
+import { Input } from 'antd';
 import './NavBar.css';
 import 'antd/dist/antd.css';
 import '../input.css';
@@ -34,28 +34,28 @@ function NavBar() {
                     <div className="right_item">
                         <ul>
                             <li className="menu1">
-                                <a href="#">세일</a>
+                                <a href="/">세일</a>
                             </li>
                             <li className="menu1">
-                                <a href="#">이벤트</a>
+                                <a href="/">이벤트</a>
                             </li>
                             <li className="menu1">
-                                <a href="#">매거진</a>
+                                <a href="/">매거진</a>
                             </li>
                             <li className="menu2">
-                                <a href="#">세일</a>
+                                <a href="/">세일</a>
                             </li>
                             <li className="menu2">
-                                <a href="#">이벤트</a>
+                                <a href="/">이벤트</a>
                             </li>
                             <li className="menu2">
-                                <a href="#">매거진</a>
+                                <a href="/">매거진</a>
                             </li>
                             <li className="menu3">
-                                <a href="#">세일</a>
+                                <a href="/">세일</a>
                             </li>
                             <li className="menu3">
-                                <a href="#">이벤트</a>
+                                <a href="/">이벤트</a>
                             </li>
                             <li className="menu3">
                                 <a href="/admin">관리자</a>
@@ -76,7 +76,7 @@ function NavBar() {
                         <Link to="/find/password">비밀번호 찾기</Link>
                     </li>
                     <li className="event">
-                        <a href="#">회원 가입 EVENT, J2KB STORE에 지금 가입하세요!</a>
+                        <a href="/">회원 가입 EVENT, J2KB STORE에 지금 가입하세요!</a>
                     </li>
                 </div>
             </div>
