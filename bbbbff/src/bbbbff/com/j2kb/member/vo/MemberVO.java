@@ -1,6 +1,6 @@
-package bbbbff.com.j2kb.user.vo;
+package bbbbff.com.j2kb.member.vo;
 
-public class User {
+public class MemberVO {
    private String member_id;
    private String member_pw;
    private String member_name;
@@ -9,7 +9,7 @@ public class User {
    private String member_phone;
    private Grade grade;
    
-   public User(String member_id, String member_pw, String member_name, String member_adrs, String member_email,
+   public MemberVO(String member_id, String member_pw, String member_name, String member_adrs, String member_email,
          String member_phone, Grade grade) {
       super();
       this.member_id = member_id;

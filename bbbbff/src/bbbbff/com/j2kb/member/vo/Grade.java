@@ -1,4 +1,4 @@
-package bbbbff.com.j2kb.user.vo;
+package bbbbff.com.j2kb.member.vo;
 
 public enum Grade {
 	NORMAL,
