@@ -1,8 +1,4 @@
 package com.j2kb.member.dao;
-<<<<<<< HEAD
-
-=======
->>>>>>> 0beb571e435515ebe26826e453249b205cfe3de9
 
 import com.j2kb.member.vo.MemberVO;
 
