@@ -1,5 +1,10 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: User
 Build-Jdk: 15
+=======
+Built-By: Yelin
+Build-Jdk: 13.0.2
+>>>>>>> 0beb571e435515ebe26826e453249b205cfe3de9
 Created-By: Maven Integration for Eclipse
 

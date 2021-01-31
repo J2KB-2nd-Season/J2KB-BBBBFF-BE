@@ -18,6 +18,9 @@ public class MemberServiceImpl implements MemberService {
 		// TODO Auto-generated method stub
 		
 	}
+<<<<<<< HEAD
 	
+=======
+>>>>>>> 0beb571e435515ebe26826e453249b205cfe3de9
 	
 }
