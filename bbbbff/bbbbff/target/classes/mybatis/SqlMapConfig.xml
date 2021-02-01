@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<typeAliases>
+		<typeAlias type="com.j2kb.member.vo.MemberVO" alias="memberVO"></typeAlias>
+	</typeAliases>
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC"/>
+			<dataSource type="POOLED">
+				<property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+				<property name="url" value="jdbc:mysql://
+				j2kb-db.c9wp5lw8dgv8.ap-northeast-2.rds.amazonaws.com:3306/sys
+				?serverTimezone=UTC"/>
+				<property name="username" value="admin"/>
+				<property name="password" value="j2kbweb1212!"/>				
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<mapper resource="mybatis/mapper/member.xml"/>
+	</mappers>
+</configuration>
