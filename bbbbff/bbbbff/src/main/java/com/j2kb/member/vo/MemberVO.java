@@ -10,6 +10,8 @@ public class MemberVO {
 	   private String member_phone;
 	   private String grade;
 	   
+	   private MemberVO() {};
+	   
 	   public MemberVO(String member_id, String member_pw, String member_name, String member_adrs, String member_email,
 	         String member_phone, String grade) {
 	      super();
