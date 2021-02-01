@@ -33,6 +33,9 @@ public class MemberDAOImpl implements MemberDAO {
 	@Override
 	public void insertNewMember(MemberVO memberVO) throws Exception {
 		// TODO Auto-generated method stub
+		sqlMapper = getInstance();
+		SqlSession session = sqlMapper.openSession();
+		session.insert("mapper.member.insertNewMember");
 	}
 
 	@Override
