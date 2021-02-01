@@ -211,6 +211,14 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/m
 		              
 	</dependencies>
     <build>
+    	<resources>
+    		<resource>
+    			<directory>src</directory>
+    			<includes>
+    				<include>**/*.xml</include>
+    			</includes>
+    		</resource>
+    	</resources>
         <plugins>
             <plugin>
                 <artifactId>maven-eclipse-plugin</artifactId>
