@@ -8,10 +8,10 @@ public class MemberVO {
 	   private String member_adrs;
 	   private String member_email;
 	   private String member_phone;
-	   private Grade grade;
+	   private String grade;
 	   
 	   public MemberVO(String member_id, String member_pw, String member_name, String member_adrs, String member_email,
-	         String member_phone, Grade grade) {
+	         String member_phone, String grade) {
 	      super();
 	      this.member_id = member_id;
 	      this.member_pw = member_pw;
@@ -70,11 +70,11 @@ public class MemberVO {
 	      this.member_phone = member_phone;
 	   }
 
-	   public Grade getGrade() {
+	   public String getGrade() {
 	      return grade;
 	   }
 
-	   public void setGrade(Grade grade) {
+	   public void setGrade(String grade) {
 	      this.grade = grade;
 	   }
 
