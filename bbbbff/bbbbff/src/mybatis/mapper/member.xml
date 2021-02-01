@@ -18,4 +18,11 @@
 			SELECT * FROM MEMBERS
 		]]>
 	</select>
+	
+	<insert id="insertNewMember" parameterType="memberVO">
+		<![CDATA[
+			INSERT INTO MEMBERS(MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_ADRS, MEMBER_EMAIL, MEMBER_PHONE, MEMBER_GRADE)
+			VALUES(#{member_id},#{member_pw},#{member_name},#{member_adrs},#{member_email},#{member_phone},#{grade})
+		]]>
+	</insert>
 </mapper>
