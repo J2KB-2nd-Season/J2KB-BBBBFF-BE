@@ -28,7 +28,7 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="com.j2kb.bbbbff" />
+	<context:component-scan base-package="com.j2kb.*" />
 	
 	<!-- 파일 업로드 -->
 	<!--업로드 경로 설정  -->
