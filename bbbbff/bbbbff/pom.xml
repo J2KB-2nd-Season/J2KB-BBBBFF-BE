@@ -172,7 +172,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/m
 		</dependency>
 
 
-
+	<!-- J2KB-TEST버전에 여기까지만 추가하였습니다. -->
 
 		<!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
 		<dependency>
