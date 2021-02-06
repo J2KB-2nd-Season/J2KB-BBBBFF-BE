@@ -2,4 +2,5 @@
 - J2KB 굿즈 쇼핑몰 프로젝트
 - BBBBFF 팀 repositry입니다.
 
-- 커밋 테스트용으로 추가한 라인입니다. 잘 추가되시나요?
+# API 문서
+https://www.notion.so/yelin1122/API-004ce33770cc4cb69f9264c6ee9e1398
