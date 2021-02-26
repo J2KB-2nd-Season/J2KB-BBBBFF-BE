@@ -31,4 +31,11 @@
 			WHERE MEMBER_ID = #{member_id}
 		]]>
 	</delete>
+	
+	<select id="findById" resultMap="memResult">
+	<![CDATA[
+			SELECT * FROM MEMBERS
+			WHERE MEMBER_ID = #{member_id}
+		]]>
+	</select>
 </mapper>

@@ -61,5 +61,19 @@ public class MemberDAOImpl implements MemberDAO {
 		session.commit();
 		session.close();
 	}
+
+	@Override
+	public MemberVO findById(String member_id) {
+		sqlMapper = getInstance();
+		SqlSession session = sqlMapper.openSession();
+		
+		List<MemberVO> memlist = null;
+		memlist = session.selectList("mapper.member.findById", member_id);
+		if(memlist.size() > 1) {
+			log.info("중복 아이디가 있습니다.");
+			log.info(memlist.toString());
+		}
+		return memlist.get(0);
+	}
 	
 }
