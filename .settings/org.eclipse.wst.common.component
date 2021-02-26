@@ -9,10 +9,11 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         		
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
-        		
-        <property name="java-output-path" value="target/classes"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/resources"/>
                 
         <property name="context-root" value="member"/>
+        <property name="java-output-path" value="/J2KB-BBBBFF-BE/target/classes"/>
         	
     </wb-module>
     

@@ -10,7 +10,7 @@ public interface MemberController {
 
 	public String getRequestApi();
 
-	public String addMember(MemberVO memberVO) throws Exception;
+	public Boolean addMember(MemberVO memberVO) throws Exception;
 	
 	public List<MemberVO> getMemberList();
 

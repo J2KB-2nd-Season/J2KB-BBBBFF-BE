@@ -16,8 +16,6 @@ import lombok.extern.java.Log;
 @Component
 @Log
 public class MemberDAOImpl implements MemberDAO {
-
-	// 참조 : 자바 웹을 다루는 기술 23.3.2 마이바티스를 이용한 회원 정보 조회 실습
 	private static SqlSessionFactory sqlMapper=null;
 	public static SqlSessionFactory getInstance() {
 		if(sqlMapper==null) {
@@ -35,7 +33,6 @@ public class MemberDAOImpl implements MemberDAO {
 	
 	@Override
 	public void insertNewMember(MemberVO memberVO) {
-		// TODO Auto-generated method stub
 		sqlMapper = getInstance();
 		SqlSession session = sqlMapper.openSession();
 		session.insert("mapper.member.insertNewMember",memberVO);

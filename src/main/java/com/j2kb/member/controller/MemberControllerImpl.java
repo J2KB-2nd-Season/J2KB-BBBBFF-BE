@@ -18,10 +18,10 @@ public class MemberControllerImpl implements MemberController {
 	@Autowired
 	private MemberService memberService;
 
-	@RequestMapping(method = RequestMethod.POST, path = "/addMember")
-	public String addMember(@RequestBody MemberVO memberVO) throws Exception {
+	@RequestMapping(method = RequestMethod.POST, path = "/api/users/join")
+	public Boolean addMember(@RequestBody MemberVO memberVO) throws Exception {
 		memberService.addMember(memberVO);
-		return "success";
+		return true;
 	}
 
 	@RequestMapping(method = RequestMethod.GET, path = "/getRequestApi")
