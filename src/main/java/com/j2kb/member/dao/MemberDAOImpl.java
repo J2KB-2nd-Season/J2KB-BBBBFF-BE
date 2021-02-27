@@ -10,11 +10,8 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.springframework.stereotype.Component;
 
 import com.j2kb.member.vo.MemberVO;
-import lombok.extern.java.Log;
-
 
 @Component
-@Log
 public class MemberDAOImpl implements MemberDAO {
 	private static SqlSessionFactory sqlMapper=null;
 	public static SqlSessionFactory getInstance() {
@@ -36,7 +33,6 @@ public class MemberDAOImpl implements MemberDAO {
 		sqlMapper = getInstance();
 		SqlSession session = sqlMapper.openSession();
 		session.insert("mapper.member.insertNewMember",memberVO);
-		log.info("memberVO:" + memberVO);
 		session.commit();
 		session.close();
 	}
@@ -67,10 +63,8 @@ public class MemberDAOImpl implements MemberDAO {
 		List<MemberVO> memlist = null;
 		memlist = session.selectList("mapper.member.findById", member_id);
 		if(memlist.size() > 1) {
-			log.info("중복 아이디가 있습니다.");
-			log.info(memlist.toString());
+			System.out.println("JungBok ID");
 		}
 		return memlist.get(0);
 	}
-	
 }

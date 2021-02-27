@@ -6,11 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import com.j2kb.member.dao.MemberDAO;
 import com.j2kb.member.vo.MemberVO;
-import lombok.extern.java.Log;
-import lombok.extern.log4j.Log4j;
 
 @Component
-@Log
 public class MemberServiceImpl implements MemberService {
 	
 	@Autowired
@@ -25,7 +22,6 @@ public class MemberServiceImpl implements MemberService {
 		member.setMember_email(member.getMember_email());
 		member.setMember_phone(member.getMember_phone());
 		member.setGrade(member.getGrade());
-		log.info("memberVO: "+member);
 		memberDAO.insertNewMember(member);
 	}
 
