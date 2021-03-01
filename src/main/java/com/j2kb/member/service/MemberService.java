@@ -8,4 +8,5 @@ public interface MemberService {
 	public void addMember(MemberVO member);
 	public void isValidatePassword(String memberId, String inputPw);
 	public List<MemberVO> getMemberList();
+	public boolean findById(String memberId);
 }

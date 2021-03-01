@@ -12,10 +12,17 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.j2kb.common.SecurityConstants;
 import com.j2kb.member.service.MemberService;
 import com.j2kb.member.vo.MemberVO;
+
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.security.Keys;
 
 
 @RestController
@@ -45,7 +52,12 @@ public class MemberControllerImpl implements MemberController {
 		return list;
 	}
 	
-	
+	//url뒤에 쿼리스트링으로 검색 값 날려주면 됨
+	// GET /api/users/find?memberId=검색할 값
+	@RequestMapping(method = RequestMethod.GET, path="/api/users/find")
+	public boolean findById(@RequestParam("memberId") String memberId){
+		return memberService.findById(memberId);
+	}
 
 
 	

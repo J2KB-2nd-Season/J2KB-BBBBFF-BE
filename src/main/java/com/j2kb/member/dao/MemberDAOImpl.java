@@ -7,13 +7,18 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+import com.j2kb.member.controller.MemberControllerImpl;
 import com.j2kb.member.vo.MemberVO;
 
 @Component
 public class MemberDAOImpl implements MemberDAO {
 	private static SqlSessionFactory sqlMapper=null;
+	private static final Logger logger = LoggerFactory.getLogger(MemberDAOImpl.class);
+	
 	public static SqlSessionFactory getInstance() {
 		if(sqlMapper==null) {
 			try {
@@ -59,12 +64,12 @@ public class MemberDAOImpl implements MemberDAO {
 	public MemberVO findById(String member_id) {
 		sqlMapper = getInstance();
 		SqlSession session = sqlMapper.openSession();
-		
 		List<MemberVO> memlist = null;
 		memlist = session.selectList("mapper.member.findById", member_id);
-		if(memlist.size() > 1) {
-			System.out.println("JungBok ID");
+		if(memlist.size() >= 1) {
+			return memlist.get(0);
+		}else {
+			return null;
 		}
-		return memlist.get(0);
 	}
 }

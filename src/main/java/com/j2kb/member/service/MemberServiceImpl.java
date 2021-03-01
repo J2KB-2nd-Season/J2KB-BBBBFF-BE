@@ -35,5 +35,15 @@ public class MemberServiceImpl implements MemberService {
 		return memberDAO.selectAllMemberList();
 	}
 	
+	public boolean findById(String member_id) {
+		
+		if(memberDAO.findById(member_id) != null) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
 	
 }
