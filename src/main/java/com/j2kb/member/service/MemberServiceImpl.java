@@ -34,6 +34,6 @@ public class MemberServiceImpl implements MemberService {
 	public List<MemberVO> getMemberList() {
 		return memberDAO.selectAllMemberList();
 	}
-
+	
 	
 }
