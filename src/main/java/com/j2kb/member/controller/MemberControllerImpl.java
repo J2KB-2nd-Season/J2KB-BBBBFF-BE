@@ -59,6 +59,8 @@ public class MemberControllerImpl implements MemberController {
 		return memberService.findById(memberId);
 	}
 
+	//https://aejeong.com/entry/Spring-boot-JWT-RefreshToken-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0
+	//JWT Token 구현한 블로그
 
 	
 }
