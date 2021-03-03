@@ -261,5 +261,6 @@
                 </configuration>
             </plugin>
         </plugins>
+        <finalName>bbbbff</finalName>
     </build>
 </project>
