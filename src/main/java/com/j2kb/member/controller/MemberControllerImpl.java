@@ -53,7 +53,7 @@ public class MemberControllerImpl implements MemberController {
 	}
 	
 	/** 이메일을 입력받고, 해당 이메일이 있다면 해당 이메일의 id를 리턴해주는 메소드 **/
-	//POST http://localhost:8081/member/api/users/find/id
+	//POST /api/users/find/id
 	/*
 	 * {
     		"member_email" : "admin@j2kb.dev"
@@ -67,7 +67,7 @@ public class MemberControllerImpl implements MemberController {
 	}
 	
 	/** 이메일 중복확인때 쓰는 메소드 **/
-	//  POST http://localhost:8081/member/api/users/validate/email로 설정하시고
+	//  POST /api/users/validate/email로 설정하시고
 	/* json데이터 형식으로
 	 * {
     		"member_email" : "admin@j2kb.dev"
