@@ -9,5 +9,6 @@ public interface MemberService {
 	public void isValidatePassword(String memberId, String inputPw);
 	public List<MemberVO> getMemberList();
 	public boolean findById(String memberId);
-	public boolean findByEmail(String email);
+	public String findByEmail(String memberEmail);
+	public boolean isValidateEmail(String memberEmail);
 }

@@ -52,9 +52,19 @@ public class MemberControllerImpl implements MemberController {
 		return list;
 	}
 	
-	
-	
-	
+	/** 이메일을 입력받고, 해당 이메일이 있다면 해당 이메일의 id를 리턴해주는 메소드 **/
+	//POST http://localhost:8081/member/api/users/find/id
+	/*
+	 * {
+    		"member_email" : "admin@j2kb.dev"
+		}
+	 * 
+	 */
+	@RequestMapping(method=RequestMethod.POST, path="/api/users/find/id")
+	public String findByEmail(@RequestBody Map<String,String> param) {
+		String memberEmail = param.get("member_email");
+		return memberService.findByEmail(memberEmail);
+	}
 	
 	/** 이메일 중복확인때 쓰는 메소드 **/
 	//  POST http://localhost:8081/member/api/users/validate/email로 설정하시고
@@ -67,7 +77,7 @@ public class MemberControllerImpl implements MemberController {
 	@RequestMapping(method = RequestMethod.POST, path="/api/users/validate/email")
 	public boolean isValidateEmail(@RequestBody Map<String,String> param){
 		String memberEmail = param.get("member_email");
-		return memberService.findByEmail(memberEmail);
+		return memberService.isValidateEmail(memberEmail);
 	}
 	
 	/** 아이디 중복확인때 쓰는 메소드 **/
