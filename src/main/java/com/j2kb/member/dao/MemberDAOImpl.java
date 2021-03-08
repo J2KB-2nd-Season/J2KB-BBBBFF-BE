@@ -72,4 +72,17 @@ public class MemberDAOImpl implements MemberDAO {
 			return null;
 		}
 	}
+	
+	@Override
+	public MemberVO findByEmail(String member_email) {
+		sqlMapper = getInstance();
+		SqlSession session = sqlMapper.openSession();
+		List<MemberVO> memlist = null;
+		memlist = session.selectList("mapper.member.findByEmail", member_email);
+		if(memlist.size() >= 1) {
+			return memlist.get(0);
+		}else {
+			return null;
+		}
+	}
 }
