@@ -45,4 +45,12 @@
 			WHERE MEMBER_EMAIL = #{member_email}
 		]]>
 	</select>
+	
+	<update id="changePassword" parameterType="memberVO">
+		<![CDATA[
+			UPDATE MEMBERS
+			SET MEMBER_PW = #{member_pw}
+			WHERE MEMBER_ID = #{member_id}
+		]]>
+	</update>
 </mapper>

@@ -85,4 +85,13 @@ public class MemberDAOImpl implements MemberDAO {
 			return null;
 		}
 	}
+	
+	@Override
+	public void changePassword(MemberVO memberVO) {
+		sqlMapper = getInstance();
+		SqlSession session = sqlMapper.openSession();
+		session.update("mapper.member.changePassword", memberVO);
+		session.commit();
+		session.close();
+	}
 }

@@ -10,4 +10,5 @@ public interface MemberDAO {
 	public List<MemberVO> selectAllMemberList();
 	public MemberVO findById(String member_id);
 	public MemberVO findByEmail(String email);
+	public void changePassword(MemberVO memberVO);
 }

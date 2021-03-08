@@ -8,13 +8,10 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.j2kb.common.SecurityConstants;
@@ -27,6 +24,7 @@ import io.jsonwebtoken.security.Keys;
 
 
 @RestController
+@RequestMapping("/api/users")
 public class MemberControllerImpl implements MemberController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MemberControllerImpl.class);
@@ -34,7 +32,7 @@ public class MemberControllerImpl implements MemberController {
 	@Autowired
 	private MemberService memberService;
 
-	@RequestMapping(method = RequestMethod.POST, path = "/api/users/join")
+	@RequestMapping(method = RequestMethod.POST, path = "/join")
 	public Boolean addMember(@RequestBody MemberVO memberVO) throws Exception {
 		memberService.addMember(memberVO);
 		return true;
@@ -52,10 +50,7 @@ public class MemberControllerImpl implements MemberController {
 		return list;
 	}
 	
-	
-	
-	
-	
+
 	/** 이메일 중복확인때 쓰는 메소드 **/
 	//  POST http://localhost:8081/member/api/users/validate/email로 설정하시고
 	/* json데이터 형식으로
@@ -64,7 +59,7 @@ public class MemberControllerImpl implements MemberController {
 		}
 	 	이렇게 날려주시면 됩니다.
 	 */ 
-	@RequestMapping(method = RequestMethod.POST, path="/api/users/validate/email")
+	@RequestMapping(method = RequestMethod.POST, path="/validate/email")
 	public boolean isValidateEmail(@RequestBody Map<String,String> param){
 		String memberEmail = param.get("member_email");
 		return memberService.findByEmail(memberEmail);
@@ -75,11 +70,20 @@ public class MemberControllerImpl implements MemberController {
 	// GET /api/users/validate/id?memberId=검색할 아이디
 	// 아이디 중복조회가 get인지 post인지 헷갈려서 일단 이 메소드는 get으로 남겨두었으니
 	// 프론트단에서 post로 중복조회 요청시 그대로 바꾸겠습니다!
-	@RequestMapping(method = RequestMethod.GET, path="/api/users/validate/id")
+	@RequestMapping(method = RequestMethod.GET, path="/validate/id")
 	public boolean isValidateId(@RequestParam("memberId") String memberId){
 		return memberService.findById(memberId);
 	}
 	
-	
+	/** 
+	 * 아이디, 이메일로 멤버를 찾은 후
+	 * 난수 비밀번호 String return
+	 */
+	@RequestMapping(method = RequestMethod.POST, path="/find/password")
+	public String changeToRandomPassword(@RequestBody Map<String,String> param) {
+		String memberId = param.get("member_id");
+		String memberEmail = param.get("member_email");
+		return memberService.findPassword(memberId, memberEmail);
+	}
 	
 }
