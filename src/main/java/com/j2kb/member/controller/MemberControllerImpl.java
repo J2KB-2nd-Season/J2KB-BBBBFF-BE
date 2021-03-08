@@ -88,7 +88,4 @@ public class MemberControllerImpl implements MemberController {
 		return memberService.findPassword(memberId, memberEmail);
 	}
 	
-	
-
-	
 }
