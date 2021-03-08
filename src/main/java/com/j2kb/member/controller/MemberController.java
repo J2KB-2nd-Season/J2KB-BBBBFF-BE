@@ -13,8 +13,7 @@ public interface MemberController {
 	public List<MemberVO> getMemberList();
 	
 	public boolean findByEmail(Map<String,String> param);
-	public String changeToRandomPassword(Map<String,String> param);
-	
+	public String changeToRandomPassword(Map<String,String> param);	
 	public boolean isValidateId(String memberId);
 
 }

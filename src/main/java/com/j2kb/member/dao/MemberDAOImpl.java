@@ -15,10 +15,8 @@ import lombok.extern.java.Log;
 
 
 @Component
-@Log
 public class MemberDAOImpl implements MemberDAO {
 
-	// 李몄“ : ��諛� �뱀�� �ㅻ（�� 湲곗�� 23.3.2 留��대��곗�ㅻ�� �댁�⑺�� ���� ��蹂� 議고�� �ㅼ��
 	private static SqlSessionFactory sqlMapper=null;
 	public static SqlSessionFactory getInstance() {
 		if(sqlMapper==null) {
@@ -40,7 +38,6 @@ public class MemberDAOImpl implements MemberDAO {
 		sqlMapper = getInstance();
 		SqlSession session = sqlMapper.openSession();
 		session.insert("mapper.member.insertNewMember",memberVO);
-		log.info("memberVO:" + memberVO);
 		session.commit();
 		session.close();
 	}
@@ -78,18 +75,11 @@ public class MemberDAOImpl implements MemberDAO {
 
 	@Override
 	public void changePassword(MemberVO memberVO) {
-		// TODO Auto-generated method stub
 		sqlMapper = getInstance();
 		SqlSession session = sqlMapper.openSession();
 		session.update("mapper.member.changePassword", memberVO);
 		session.commit();
 		session.close();
-	}
-
-	@Override
-	public MemberVO findById(String member_id) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }

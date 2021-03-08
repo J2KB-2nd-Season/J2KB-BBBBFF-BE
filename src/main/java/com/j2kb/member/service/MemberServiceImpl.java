@@ -12,7 +12,6 @@ import lombok.extern.java.Log;
 import lombok.extern.log4j.Log4j;
 
 @Component
-@Log
 public class MemberServiceImpl implements MemberService {
 	
 	@Autowired
@@ -65,7 +64,7 @@ public class MemberServiceImpl implements MemberService {
 		}
 		return newPassword;
 	}
-	
+
 	// 난수 생성.. 지저분해서 어디로 빼두고싶은데 이런건 어디로 어떻게 빼야 예쁘게 뺄 수 있나요?
 	public String makeRandomPassword(int randomNumberLength) {
 		char[] characters = {
@@ -84,4 +83,5 @@ public class MemberServiceImpl implements MemberService {
 		return sb.toString();
 		}
 	
+
 }
