@@ -3,6 +3,7 @@ package com.j2kb.member.controller;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,7 +40,6 @@ public class MemberControllerImpl implements MemberController {
 		return true;
 		
 	}
-	
 
 	@RequestMapping(method = RequestMethod.GET, path = "/getRequestApi")
 	public String getRequestApi() {
@@ -52,13 +52,30 @@ public class MemberControllerImpl implements MemberController {
 		return list;
 	}
 	
-	//url뒤에 쿼리스트링으로 검색 값 날려주면 됨
-	// GET /api/users/find?memberId=검색할 값
+	/** 이메일 중복확인때 쓰는 메소드 **/
+	//  POST http://localhost:8081/member/api/users/find/id로 설정하시고
+	/* json데이터 형식으로
+	 * {
+    		"member_email" : "admin@j2kb.dev"
+		}
+	 	이렇게 날려주시면 됩니다.
+	 */ 
+	@RequestMapping(method = RequestMethod.POST, path="/api/users/find/id")
+	public boolean findByEmail(@RequestBody Map<String,String> param){
+		String memberEmail = param.get("member_email");
+		return memberService.findByEmail(memberEmail);
+	}
+	
+	/** 아이디 중복확인때 쓰는 메소드 **/
+	// url뒤에 쿼리스트링으로 검색 값(아이디, 이메일 아님) 날려주면 됨
+	// GET /api/users/find?memberId=검색할 아이디
+	// 아이디 중복조회가 get인지 post인지 헷갈려서 일단 이 메소드는 get으로 남겨두었으니
+	// 프론트단에서 post로 중복조회 요청시 그대로 바꾸겠습니다!
 	@RequestMapping(method = RequestMethod.GET, path="/api/users/find")
-	public boolean findById(@RequestParam("memberId") String memberId){
+	public boolean isValidateId(@RequestParam("memberId") String memberId){
 		return memberService.findById(memberId);
 	}
-
+	
 
 	
 }

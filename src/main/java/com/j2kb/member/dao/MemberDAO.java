@@ -9,4 +9,5 @@ public interface MemberDAO {
 	public void deleteMember(String member_id);
 	public List<MemberVO> selectAllMemberList();
 	public MemberVO findById(String member_id);
+	public MemberVO findByEmail(String email);
 }

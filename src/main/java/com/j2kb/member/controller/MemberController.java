@@ -1,10 +1,7 @@
 package com.j2kb.member.controller;
 
 import java.util.List;
-
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-
+import java.util.Map;
 import com.j2kb.member.vo.MemberVO;
 
 public interface MemberController {
@@ -15,6 +12,8 @@ public interface MemberController {
 	
 	public List<MemberVO> getMemberList();
 	
-	public boolean findById(String memberId);
+	public boolean findByEmail(Map<String,String> param);
+	
+	public boolean isValidateId(String memberId);
 
 }
