@@ -32,9 +32,9 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
 	@Override
-	public boolean findById(String member_id) {
+	public boolean findById(String memberId) {
 		
-		if(memberDAO.findById(member_id) != null) {
+		if(memberDAO.findById(memberId) != null) {
 			return true;
 		}
 		else {
@@ -43,9 +43,20 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
 	@Override
-	public boolean findByEmail(String member_email) {
+	public String findByEmail(String memberEmail) {
+		MemberVO member = memberDAO.findByEmail(memberEmail);
+		if(memberDAO.findByEmail(memberEmail) != null) {
+			return member.getMember_id();
+		}
+		else {
+			return null;
+		}
+	}
+	
+	@Override
+	public boolean isValidateEmail(String memberEmail) {
 		
-		if(memberDAO.findByEmail(member_email) != null) {
+		if(memberDAO.findByEmail(memberEmail) != null) {
 			return true;
 		}
 		else {

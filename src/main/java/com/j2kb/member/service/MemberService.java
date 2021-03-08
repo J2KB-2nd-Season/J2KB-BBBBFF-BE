@@ -8,6 +8,8 @@ public interface MemberService {
 	public void addMember(MemberVO member);
 	public List<MemberVO> getMemberList();
 	public boolean findById(String memberId);
-	public boolean findByEmail(String email);
+	//public boolean findByEmail(String email);
 	public String findPassword(String memberId, String email);
+	public String findByEmail(String memberEmail);
+	public boolean isValidateEmail(String memberEmail);
 }
