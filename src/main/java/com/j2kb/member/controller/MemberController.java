@@ -12,8 +12,11 @@ public interface MemberController {
 	
 	public List<MemberVO> getMemberList();
 	
-	public boolean findByEmail(Map<String,String> param);
+	public boolean isValidateEmail(Map<String,String> param);
 	
 	public boolean isValidateId(String memberId);
+	
+	
+
 
 }
