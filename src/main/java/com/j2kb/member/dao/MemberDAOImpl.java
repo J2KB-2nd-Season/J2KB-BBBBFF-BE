@@ -1,6 +1,7 @@
 package com.j2kb.member.dao;
 
 import java.io.Reader;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.io.Resources;
@@ -17,7 +18,7 @@ import lombok.extern.java.Log;
 @Log
 public class MemberDAOImpl implements MemberDAO {
 
-	// 참조 : 자바 웹을 다루는 기술 23.3.2 마이바티스를 이용한 회원 정보 조회 실습
+	// 李몄“ : ��諛� �뱀�� �ㅻ（�� 湲곗�� 23.3.2 留��대��곗�ㅻ�� �댁�⑺�� ���� ��蹂� 議고�� �ㅼ��
 	private static SqlSessionFactory sqlMapper=null;
 	public static SqlSessionFactory getInstance() {
 		if(sqlMapper==null) {
@@ -62,4 +63,33 @@ public class MemberDAOImpl implements MemberDAO {
 		session.close();
 	}
 	
+	@Override
+	public MemberVO findByEmail(String member_email) {
+		sqlMapper = getInstance();
+		SqlSession session = sqlMapper.openSession();
+		List<MemberVO> memlist = null;
+		memlist = session.selectList("mapper.member.findByEmail", member_email);
+		if(memlist.size() >= 1) {
+			return memlist.get(0);
+		}else {
+			return null;
+		}
+	}
+
+	@Override
+	public void changePassword(MemberVO memberVO) {
+		// TODO Auto-generated method stub
+		sqlMapper = getInstance();
+		SqlSession session = sqlMapper.openSession();
+		session.update("mapper.member.changePassword", memberVO);
+		session.commit();
+		session.close();
+	}
+
+	@Override
+	public MemberVO findById(String member_id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
