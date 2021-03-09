@@ -58,7 +58,7 @@ public class MemberControllerImpl implements MemberController {
 		}
 	 * 
 	 */
-	@RequestMapping(method=RequestMethod.POST, path="/api/users/find/id")
+	@RequestMapping(method=RequestMethod.POST, path="/find/id")
 	public String findByEmail(@RequestBody Map<String,String> param) {
 		String memberEmail = param.get("member_email");
 		return memberService.findByEmail(memberEmail);
