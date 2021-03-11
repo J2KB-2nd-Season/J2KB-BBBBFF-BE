@@ -2,6 +2,7 @@ package com.j2kb.member.service;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
 
@@ -14,7 +15,6 @@ public class AuthService {
 		String member_id = "";
 		String nullString = "";
 		
-		System.out.println("---getMemberIdFromCookie---");
 		Cookie[] cookies = request.getCookies();
 		String memberKey = "member_id";
 		if(cookies != null) {
@@ -28,6 +28,10 @@ public class AuthService {
 		
 		if(member_id.equals(nullString)) return nullString;
 		else return member_id;
+	}
+	
+	public String getMemberVoFromSession(HttpSession session) {
+		return (String)session.getAttribute("name");
 	}
 	
 	public Boolean checkIsAdmin(MemberVO vo) {
@@ -49,9 +53,5 @@ public class AuthService {
 			}
 		}
 		return isAuth;
-	}
-	
-	public String isItWork() {
-		return "Work!";
 	}
 }

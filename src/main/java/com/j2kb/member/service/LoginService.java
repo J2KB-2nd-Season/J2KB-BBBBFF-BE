@@ -27,6 +27,7 @@ public class LoginService {
 		}
 		
 		if(isValidateLogin(vo.getMember_id(),pw)) {
+			
 			Cookie[] cookies = request.getCookies();
 			Cookie userCookie = null;
 			if(cookies != null) {
@@ -37,6 +38,23 @@ public class LoginService {
 					}
 				}
 			}
+			httpSession.setAttribute("member_id", id);
+			
+			Boolean isAdmin = (vo.getGrade()=="0") ? true : false;
+			httpSession.setAttribute("isAdmin", isAdmin);
+			
+			Boolean isAuth = true;
+			httpSession.setAttribute("isAuth", isAuth);
+			
+			String userEmail = vo.getMember_email();
+			httpSession.setAttribute("email", userEmail);
+			
+			String userName = vo.getMember_name();
+			httpSession.setAttribute("name", userName);
+			
+			int role = Integer.parseInt(vo.getGrade());
+			httpSession.setAttribute("role", role);
+			
 			userCookie = new Cookie("member_id", id);
 			response.addCookie(userCookie);
 			userCookie.setMaxAge(60*60);
@@ -50,5 +68,19 @@ public class LoginService {
 	public boolean isValidateLogin(String originPw, String pw) {
 		if((memberDAO.findById(originPw).getMember_pw()).equals(pw)) return true;
 		else return false;
+	}
+	
+	public Boolean userLogoutService(HttpSession session, HttpServletRequest request) {
+		Boolean logoutSuccess = false;
+		
+		Cookie[] cookies = request.getCookies();
+		for(Cookie c : cookies) {
+			if(c.getName().equals("member_id")) {
+				c.setMaxAge(0);
+				logoutSuccess = true;
+			}
+		}
+		
+		return logoutSuccess;
 	}
 }

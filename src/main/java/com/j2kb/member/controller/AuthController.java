@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,24 +37,30 @@ public class AuthController {
 	public Map<String, Object> authCheck(HttpServletRequest request) {
 		Map<String, Object> result = new HashMap<String, Object>();
 		String member_id="";
-		System.out.println("-------#1-------");
-		System.out.println("authService workd?:"+authService.isItWork());
 
 		member_id = authService.getMemberIdFromCookie(request);
 	
-		System.out.println("-------#2-------");
 		MemberVO vo = memberDAO.findById(member_id);
 		
-		Boolean isAdmin = (vo == null) ? false : authService.checkIsAdmin(vo);
-		Boolean isAuth = (vo==null) ? false : authService.checkIsAuth(vo, request);
-		String email = (vo == null) ? "" : vo.getMember_email();
-		String member_name = (vo==null) ? "" : vo.getMember_name();
-		int role = (vo==null) ? -1 : memberService.getMemberRole(vo);
+		HttpSession session = request.getSession();
+		Boolean isAdmin = (vo == null || session == null) ? false : authService.checkIsAdmin(vo);
+		Boolean isAuth = (vo==null || session == null) ? false : authService.checkIsAuth(vo, request);
+		String email = (vo == null || session == null) ? "" : vo.getMember_email();
+		String name = (vo==null || session == null) ? "" : vo.getMember_name();
+		int role = (vo==null || session == null) ? -1 : memberService.getMemberRole(vo);
 		
+		
+//		HttpSession session = request.getSession();
+//		Boolean isAdmin = (Boolean) session.getAttribute("isAdmin");
+//		Boolean isAuth = (Boolean)session.getAttribute("isAuth");
+//		String email = (String)session.getAttribute("email");
+//		String name = (String)session.getAttribute("name");
+//		Integer role = (Integer)session.getAttribute("role");
+
 		result.put("isAdmin",isAdmin);
 		result.put("isAuth",isAuth);
 		result.put("email",email);
-		result.put("name",member_name);
+		result.put("name",name);
 		result.put("role",role);
 		
 		return result;
