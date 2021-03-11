@@ -6,12 +6,14 @@ import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+
 import com.j2kb.member.dao.MemberDAO;
 import com.j2kb.member.vo.MemberVO;
 import lombok.extern.java.Log;
 import lombok.extern.log4j.Log4j;
 
-@Component
+@Service
 public class MemberServiceImpl implements MemberService {
 	
 	@Autowired
@@ -26,7 +28,6 @@ public class MemberServiceImpl implements MemberService {
 		member.setMember_email(member.getMember_email());
 		member.setMember_phone(member.getMember_phone());
 		member.setGrade(member.getGrade());
-		log.info("memberVO: "+member);
 		memberDAO.insertNewMember(member);
 	}
 	
@@ -34,18 +35,39 @@ public class MemberServiceImpl implements MemberService {
 	public List<MemberVO> getMemberList() {
 		return memberDAO.selectAllMemberList();
 	}
+	
 	@Override
-	public boolean findById(String member_id) {
+	public boolean findById(String memberId) {
 		
-		if(memberDAO.findById(member_id) != null) return true;
-		else return false;
+		if(memberDAO.findById(memberId) != null) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 	
 	@Override
-	public boolean findByEmail(String member_email) {
+	public String findByEmail(String memberEmail) {
+		MemberVO member = memberDAO.findByEmail(memberEmail);
+		if(memberDAO.findByEmail(memberEmail) != null) {
+			return member.getMember_id();
+		}
+		else {
+			return null;
+		}
+	}
+	
+	
+	@Override
+	public boolean isValidateEmail(String memberEmail) {
 		
-		if(memberDAO.findByEmail(member_email) != null) return true;
-		else return false;
+		if(memberDAO.findByEmail(memberEmail) != null) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 
 	@Override
@@ -65,7 +87,6 @@ public class MemberServiceImpl implements MemberService {
 		return newPassword;
 	}
 
-	// 난수 생성.. 지저분해서 어디로 빼두고싶은데 이런건 어디로 어떻게 빼야 예쁘게 뺄 수 있나요?
 	public String makeRandomPassword(int randomNumberLength) {
 		char[] characters = {
 				'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i',
@@ -82,6 +103,18 @@ public class MemberServiceImpl implements MemberService {
 		for(int i=0; i<randomNumberLength; i++) sb.append(characters[rn.nextInt(length)]);
 		return sb.toString();
 		}
-	
+
+	@Override
+	public boolean isValidatePw(String memberId, String memberPw) {
+		String validatePw = memberDAO.findById(memberId).getMember_pw();
+		if(validatePw.equals(memberPw)) return true;
+		else return false;
+	}
+
+	@Override
+	public int getMemberRole(MemberVO vo) {
+		String grade = vo.getGrade();
+		return Integer.parseInt(grade);
+	}
 
 }
