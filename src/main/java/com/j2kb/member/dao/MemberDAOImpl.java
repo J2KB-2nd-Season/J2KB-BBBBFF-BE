@@ -1,6 +1,7 @@
 package com.j2kb.member.dao;
 
 import java.io.Reader;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.io.Resources;

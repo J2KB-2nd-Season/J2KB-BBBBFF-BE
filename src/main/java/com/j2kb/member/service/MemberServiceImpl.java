@@ -1,14 +1,17 @@
 package com.j2kb.member.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+
 import com.j2kb.member.dao.MemberDAO;
 import com.j2kb.member.vo.MemberVO;
 
-@Component
+@Service
 public class MemberServiceImpl implements MemberService {
 	
 	@Autowired
@@ -63,7 +66,7 @@ public class MemberServiceImpl implements MemberService {
 			return false;
 		}
 	}
-	
+
 	@Override
 	public String findPassword(String member_id, String member_email) {
 		MemberVO memberVO = memberDAO.findById(member_id);
@@ -80,22 +83,35 @@ public class MemberServiceImpl implements MemberService {
 		}
 		return newPassword;
 	}
-	
-	// 난수 생성.. 지저분해서 어디로 빼두고싶은데 이런건 어디로 어떻게 빼야 예쁘게 뺄 수 있나요?
-		public String makeRandomPassword(int randomNumberLength) {
-			char[] characters = {
-					'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i',
-					'j', 'k', 'l', 'n', 'o', 'p', 'q', 'r', 's',
-					't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1',
-					'2', '3', '4', '5', '6', '7', '8', '9', 'A',
-					'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
-					'K', 'L', 'M', 'N', 'O', 'P'};
 
-			StringBuilder sb = new StringBuilder("");
-			Random rn = new Random();
-			int length = characters.length;
+	public String makeRandomPassword(int randomNumberLength) {
+		char[] characters = {
+				'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i',
+				'j', 'k', 'l', 'n', 'o', 'p', 'q', 'r', 's',
+				't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1',
+				'2', '3', '4', '5', '6', '7', '8', '9', 'A',
+				'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
+				'K', 'L', 'M', 'N', 'O', 'P'};
+		
+		StringBuilder sb = new StringBuilder("");
+		Random rn = new Random();
+		int length = characters.length;
+		
+		for(int i=0; i<randomNumberLength; i++) sb.append(characters[rn.nextInt(length)]);
+		return sb.toString();
+		}
 
-			for(int i=0; i<randomNumberLength; i++) sb.append(characters[rn.nextInt(length)]);
-			return sb.toString();
-			}
+	@Override
+	public boolean isValidatePw(String memberId, String memberPw) {
+		String validatePw = memberDAO.findById(memberId).getMember_pw();
+		if(validatePw.equals(memberPw)) return true;
+		else return false;
+	}
+
+	@Override
+	public int getMemberRole(MemberVO vo) {
+		String grade = vo.getGrade();
+		return Integer.parseInt(grade);
+	}
+
 }

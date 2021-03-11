@@ -1,5 +1,6 @@
 package com.j2kb.member.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.j2kb.member.vo.MemberVO;
