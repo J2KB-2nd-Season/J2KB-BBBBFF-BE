@@ -1,5 +1,9 @@
 package com.j2kb.cart.dao;
 
-public interface CartDao {
+import com.j2kb.cart.vo.CartVO;
 
+public interface CartDAO {
+
+	public int selectCurrentCartNum();
+	public void insertNewCart(CartVO cartVO);
 }
