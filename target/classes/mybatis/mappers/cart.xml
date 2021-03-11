@@ -10,4 +10,11 @@
 		<result property="memberId" column="MEMBER_ID" />
 	</resultMap>
 	
+	<select id="selectCartList" resultMap = "cartResult">
+		<![CDATA[
+			SELECT * FROM CART
+			WHERE MEMBER_ID = {#memberId}
+		]]>
+	</select>
+	
 </mapper>
