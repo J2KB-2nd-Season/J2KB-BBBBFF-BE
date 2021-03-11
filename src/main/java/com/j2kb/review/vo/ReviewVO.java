@@ -8,13 +8,14 @@ public class ReviewVO {
 	private String reviewImage;
 	private String memberId;
 	private int prodNum;
+	private int reviewScore;
 	
 	public ReviewVO() {
 		
 	}
 	
 	public ReviewVO(int reviewNum,String reviewTitle, String reviewContent, String reviewImage,
-			String memberId,int prodNum   ) {
+			String memberId,int prodNum, int reviewScore) {
 		super();
 		this.reviewNum = reviewNum;
 		this.reviewTitle = reviewTitle;
@@ -22,6 +23,7 @@ public class ReviewVO {
 		this.reviewImage = reviewImage;
 		this.prodNum = prodNum;
 		this.memberId = memberId;
+		this.reviewScore = reviewScore;
 	}
 
 	public int getReviewNum() {
@@ -71,6 +73,16 @@ public class ReviewVO {
 	public void setProdNum(int prodNum) {
 		this.prodNum = prodNum;
 	}
+
+	public int getReviewScore() {
+		return reviewScore;
+	}
+
+	public void setReviewScore(int reviewScore) {
+		this.reviewScore = reviewScore;
+	}
+	
+	
 	
 	
 	
