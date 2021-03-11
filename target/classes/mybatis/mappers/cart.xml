@@ -17,7 +17,7 @@
 		]]>
 	</select>
 	
-	<select id="selectCurrentCartNum" resultMap="int">
+	<select id="selectCurrentCartNum" resultType="int">
 		<![CDATA[
 			SELECT NVL(MAX(cart_num),0) + 1
 			FROM CART
