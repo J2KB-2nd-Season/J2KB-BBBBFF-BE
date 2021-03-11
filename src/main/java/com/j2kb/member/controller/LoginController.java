@@ -29,18 +29,29 @@ public class LoginController {
 
 	@RequestMapping(method = RequestMethod.POST, path = "/login")
 	@ResponseBody
-	public Map<String, Object> userLoginPass(@RequestBody Map<String, String> param, HttpSession httpSession,
+	public Map<String, Object> userLoginPass(@RequestBody Map<String, String> param, 
 			HttpServletRequest request, HttpServletResponse response) {
 
 		Map<String, Object> result = new HashMap<String, Object>();
 		String memberId = param.get("member_id");
 		String memberPw = param.get("member_pw");
 
+		HttpSession httpSession = request.getSession();
 		int status = loginService.userLoginService(memberId, memberPw, httpSession, request, response);
 
 		result.put("member_id", memberId);
 		result.put("status", status);
 
+		return result;
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, path = "/logout")
+	public Map<String, Object> userLogout(HttpSession session, HttpServletRequest request) {
+		Map<String, Object> result = new HashMap<String, Object>();
+		Boolean logoutSuccess;
+		session.invalidate();
+		logoutSuccess = loginService.userLogoutService(session, request);
+		result.put("logoutOk", logoutSuccess);
 		return result;
 	}
 
