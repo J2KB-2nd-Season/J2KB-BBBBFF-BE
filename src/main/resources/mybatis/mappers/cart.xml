@@ -18,6 +18,15 @@
 		]]>
 	</select>
 	
+	<select id="selectSumCartList" resultMap = "cartResult">
+		<![CDATA[
+			SELECT sum(cart_quan),member_id,prod_num,cart_date
+			FROM cart
+			WHERE MEMBER_ID = {#memberId}
+			GROUP BY prod_num;
+		]]>
+	</select>
+	
 	<insert id="insertNewCart" parameterType="cartVO">
 		<![CDATA[
 			INSERT INTO cart(cart_num, cart_quan, prod_num, MEMBER_ID, cart_date) VALUES(#{cartNum},#{cartQuan},#{prodNum},#{memberId},#{cartDate})
