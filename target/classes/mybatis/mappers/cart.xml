@@ -17,4 +17,12 @@
 		]]>
 	</select>
 	
+	<select id="selectCurrentCartNum" resultMap="int">
+		<![CDATA[
+			SELECT NVL(MAX(cart_num),0) + 1
+			FROM CART
+		]]>
+	</select>
+	
+	
 </mapper>
