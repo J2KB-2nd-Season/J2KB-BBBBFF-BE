@@ -5,6 +5,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,14 +21,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.j2kb.common.SecurityConstants;
 import com.j2kb.member.service.MemberService;
 import com.j2kb.member.vo.MemberVO;
-
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.security.Keys;
-
 
 @RestController
 @RequestMapping("/api/users")
@@ -34,12 +32,12 @@ public class MemberControllerImpl implements MemberController {
 	
 	@Autowired
 	private MemberService memberService;
+	private LoginController loginController;
 
 	@RequestMapping(method = RequestMethod.POST, path = "/join")
 	public Boolean addMember(@RequestBody MemberVO memberVO) throws Exception {
 		memberService.addMember(memberVO);
 		return true;
-		
 	}
 
 	@RequestMapping(method = RequestMethod.GET, path = "/getRequestApi")
@@ -62,9 +60,15 @@ public class MemberControllerImpl implements MemberController {
 	 	이렇게 날려주시면 됩니다.
 	 */ 
 	@RequestMapping(method = RequestMethod.POST, path="/find/id")
-	public boolean findByEmail(@RequestBody Map<String,String> param){
+	public String findByEmail(@RequestBody Map<String,String> param){
 		String memberEmail = param.get("member_email");
 		return memberService.findByEmail(memberEmail);
+	}
+	
+	@RequestMapping(method = RequestMethod.POST, path="/validate/email")
+	public boolean isValidateEmail(@RequestBody Map<String,String> param){
+		String memberEmail = param.get("member_email");
+		return memberService.isValidateEmail(memberEmail);
 	}
 	
 	/** 아이디 중복확인때 쓰는 메소드 **/
