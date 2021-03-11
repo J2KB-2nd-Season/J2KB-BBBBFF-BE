@@ -8,16 +8,18 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+import com.j2kb.member.controller.MemberControllerImpl;
 import com.j2kb.member.vo.MemberVO;
-import lombok.extern.java.Log;
-
 
 @Component
 public class MemberDAOImpl implements MemberDAO {
-
 	private static SqlSessionFactory sqlMapper=null;
+	private static final Logger logger = LoggerFactory.getLogger(MemberDAOImpl.class);
+	
 	public static SqlSessionFactory getInstance() {
 		if(sqlMapper==null) {
 			try {
@@ -34,7 +36,6 @@ public class MemberDAOImpl implements MemberDAO {
 	
 	@Override
 	public void insertNewMember(MemberVO memberVO) {
-		// TODO Auto-generated method stub
 		sqlMapper = getInstance();
 		SqlSession session = sqlMapper.openSession();
 		session.insert("mapper.member.insertNewMember",memberVO);
@@ -59,6 +60,19 @@ public class MemberDAOImpl implements MemberDAO {
 		session.commit();
 		session.close();
 	}
+
+	@Override
+	public MemberVO findById(String member_id) {
+		sqlMapper = getInstance();
+		SqlSession session = sqlMapper.openSession();
+		List<MemberVO> memlist = null;
+		memlist = session.selectList("mapper.member.findById", member_id);
+		if(memlist.size() >= 1) {
+			return memlist.get(0);
+		}else {
+			return null;
+		}
+	}
 	
 	@Override
 	public MemberVO findByEmail(String member_email) {
@@ -72,7 +86,7 @@ public class MemberDAOImpl implements MemberDAO {
 			return null;
 		}
 	}
-
+	
 	@Override
 	public void changePassword(MemberVO memberVO) {
 		sqlMapper = getInstance();
@@ -81,5 +95,4 @@ public class MemberDAOImpl implements MemberDAO {
 		session.commit();
 		session.close();
 	}
-
 }

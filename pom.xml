@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
+xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.j2kb</groupId>
 	<artifactId>member</artifactId>
-	<name>J2KB-TEST</name>
+	<name>J2KB-BBBBFF-BE</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 		<properties>
@@ -171,16 +171,58 @@
 			<version>3.2.8</version>
 		</dependency>
 
-
-
 		<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-spring -->
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis-spring</artifactId>
 			<version>1.2.2</version>
-		</dependency>     
+		</dependency>   
+		
+		
 		
 		<!--여기까지 이상없음 -->
+		
+		<!-- SPRING SECURITY -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>5.0.7.RELEASE</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>5.0.7.RELEASE</version>
+		</dependency>
+		
+			<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+			<version>5.0.7.RELEASE</version>
+		</dependency>
+		
+		
+		<!-- JWT -->
+		<dependency>   
+		<groupId>io.jsonwebtoken</groupId>  
+		<artifactId>jjwt-api</artifactId>  
+		<version>0.10.5</version>  
+		</dependency>   
+		
+		<dependency>   
+		<groupId>io.jsonwebtoken</groupId>
+		<artifactId>jjwt-impl</artifactId>
+		<version>0.10.5</version>  
+		<scope>runtime</scope>
+		</dependency> 
+		
+		<dependency>
+		<groupId>io.jsonwebtoken</groupId>
+		<artifactId>jjwt-jackson</artifactId>
+		<version>0.10.5</version>
+		<scope>runtime</scope>
+		</dependency> 
+		
 	</dependencies>
     <build>
         <plugins>
@@ -219,5 +261,6 @@
                 </configuration>
             </plugin>
         </plugins>
+        <finalName>bbbbff</finalName>
     </build>
 </project>

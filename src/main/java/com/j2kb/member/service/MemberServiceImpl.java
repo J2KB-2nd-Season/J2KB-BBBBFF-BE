@@ -10,8 +10,6 @@ import org.springframework.stereotype.Service;
 
 import com.j2kb.member.dao.MemberDAO;
 import com.j2kb.member.vo.MemberVO;
-import lombok.extern.java.Log;
-import lombok.extern.log4j.Log4j;
 
 @Service
 public class MemberServiceImpl implements MemberService {
@@ -57,7 +55,6 @@ public class MemberServiceImpl implements MemberService {
 			return null;
 		}
 	}
-	
 	
 	@Override
 	public boolean isValidateEmail(String memberEmail) {

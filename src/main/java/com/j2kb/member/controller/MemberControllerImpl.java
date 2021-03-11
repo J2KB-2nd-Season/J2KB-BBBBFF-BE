@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,8 +22,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.j2kb.common.SecurityConstants;
 import com.j2kb.member.service.MemberService;
 import com.j2kb.member.vo.MemberVO;
+
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.security.Keys;
+
 
 @RestController
 @RequestMapping("/api/users")
@@ -51,40 +58,23 @@ public class MemberControllerImpl implements MemberController {
 		return list;
 	}
 	
-	/** 이메일 중복확인때 쓰는 메소드 **/
-	//  POST http://localhost:8081/member/api/users/find/id로 설정하시고
-	/* json데이터 형식으로
-	 * {
-    		"member_email" : "admin@j2kb.dev"
-		}
-	 	이렇게 날려주시면 됩니다.
-	 */ 
-	@RequestMapping(method = RequestMethod.POST, path="/find/id")
-	public String findByEmail(@RequestBody Map<String,String> param){
+	@RequestMapping(method=RequestMethod.POST, path="/find/id")
+	public String findByEmail(@RequestBody Map<String,String> param) {
 		String memberEmail = param.get("member_email");
 		return memberService.findByEmail(memberEmail);
 	}
-	
+
 	@RequestMapping(method = RequestMethod.POST, path="/validate/email")
 	public boolean isValidateEmail(@RequestBody Map<String,String> param){
 		String memberEmail = param.get("member_email");
 		return memberService.isValidateEmail(memberEmail);
 	}
 	
-	/** 아이디 중복확인때 쓰는 메소드 **/
-	// url뒤에 쿼리스트링으로 검색 값(아이디, 이메일 아님) 날려주면 됨
-	// GET /api/users/find?memberId=검색할 아이디
-	// 아이디 중복조회가 get인지 post인지 헷갈려서 일단 이 메소드는 get으로 남겨두었으니
-	// 프론트단에서 post로 중복조회 요청시 그대로 바꾸겠습니다!
-	@RequestMapping(method = RequestMethod.GET, path="/find")
+	@RequestMapping(method = RequestMethod.GET, path="/validate/id")
 	public boolean isValidateId(@RequestParam("memberId") String memberId){
 		return memberService.findById(memberId);
 	}
 	
-	/** 
-	 * 아이디, 이메일로 멤버를 찾은 후
-	 * 난수 비밀번호 String return
-	 */
 	@RequestMapping(method = RequestMethod.POST, path="/find/password")
 	public String changeToRandomPassword(@RequestBody Map<String,String> param) {
 		String memberId = param.get("member_id");

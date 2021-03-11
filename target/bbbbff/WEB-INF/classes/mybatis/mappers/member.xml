@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD MApper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.member">
+	<resultMap id="memResult" type="memberVO">
+		<result property="member_id" column="MEMBER_ID" />
+		<result property="member_pw" column="MEMBER_PW" />
+		<result property="member_name" column="MEMBER_NAME" />
+		<result property="member_adrs" column="MEMBER_ADRS" />
+		<result property="member_email" column="MEMBER_EMAIL" />
+		<result property="member_phone" column="MEMBER_PHONE" />
+		<result property="grade" column="MEMBER_GRADE" />	
+	</resultMap>
+	
+	<select id="selectAllMemberList" resultMap="memResult">
+		<![CDATA[
+			SELECT * FROM MEMBERS
+		]]>
+	</select>
+	
+	<insert id="insertNewMember" parameterType="memberVO">
+		<![CDATA[
+			INSERT INTO MEMBERS(MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_ADRS, MEMBER_EMAIL, MEMBER_PHONE, MEMBER_GRADE) VALUES(#{member_id},#{member_pw},#{member_name},#{member_adrs},#{member_email},#{member_phone},#{grade})
+		]]>
+	</insert>
+	
+	<delete id="deleteMember" parameterType="String">
+		<![CDATA[
+			DELETE FROM MEMBERS
+			WHERE MEMBER_ID = #{member_id}
+		]]>
+	</delete>
+	
+	<select id="findById" resultMap="memResult">
+	<![CDATA[
+			SELECT * FROM MEMBERS
+			WHERE MEMBER_ID = #{member_id}
+		]]>
+	</select>
+	
+	<select id="findByEmail" resultMap="memResult">
+	<![CDATA[
+			SELECT * FROM MEMBERS
+			WHERE MEMBER_EMAIL = #{member_email}
+		]]>
+	</select>
+	
+	<update id="changePassword" parameterType="memberVO">
+		<![CDATA[
+			UPDATE MEMBERS
+			SET MEMBER_PW = #{member_pw}
+			WHERE MEMBER_ID = #{member_id}
+		]]>
+	</update>
+</mapper>
