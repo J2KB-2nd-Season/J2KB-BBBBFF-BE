@@ -8,6 +8,21 @@
 		<result property="reviewImage" column="REVIEW_IMAGE" />
 		<result property="memberId" column="MEMBER_ID" />
 		<result property="prodNum" column="PROD_NUM" />
+		<result property="reviewScore" column="REVIEW_SCORE" />
 	</resultMap>
+	
+	<select id="selectReviewList" resultMap = "reviewResult">
+		<![CDATA[
+			SELECT * FROM REVIEW
+			WHERE MEMBER_ID = {#memberId}
+		]]>
+	</select>
+	
+	<insert id="writeReview" parameterType="ReviewVO">
+		<![CDATA[
+			INSERT INTO REVIEW(REVIEW_NUM,REVIEW_TITLE,REVIEW_CONTENT,REVIEW_IMAGE,MEMBER_ID,PROD_NUM,REVIEW_SCORE ) 
+			VALUES(#{reviewNum},#{reviewTitle},#{reviewContent},#{reviewImage},#{memberId}, #{prodNum}, #{reviewScore})
+		]]>
+	</insert>
 	
 </mapper>
