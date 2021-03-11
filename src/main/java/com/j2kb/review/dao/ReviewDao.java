@@ -1,5 +1,5 @@
 package com.j2kb.review.dao;
 
-public class ReviewDao {
+public interface ReviewDao {
 
 }

@@ -1,5 +1,5 @@
 package com.j2kb.review.controller;
 
-public class ReviewController {
+public interface ReviewController {
 
 }
