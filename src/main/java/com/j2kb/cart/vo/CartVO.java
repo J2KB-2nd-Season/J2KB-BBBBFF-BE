@@ -1,22 +1,26 @@
 package com.j2kb.cart.vo;
 
+import java.sql.Timestamp;
+
 public class CartVO {
 	
 	private String cartNum;
 	private String cartQuan;
 	private String prodNum;
 	private String memberId;
+	private Timestamp cartDate;
 	
 	public CartVO() {
 		
 	}
 
-	public CartVO(String cartNum, String cartQuan, String prodNum, String memberId) {
+	public CartVO(String cartNum, String cartQuan, String prodNum, String memberId, Timestamp cartDate) {
 		super();
 		this.cartNum = cartNum;
 		this.cartQuan = cartQuan;
 		this.prodNum = prodNum;
 		this.memberId = memberId;
+		this.cartDate = cartDate;
 	}
 
 	public String getCartNum() {
@@ -51,11 +55,23 @@ public class CartVO {
 		this.memberId = memberId;
 	}
 
+	public Timestamp getCartDate() {
+		return cartDate;
+	}
+
+	public void setCartDate(Timestamp cartDate) {
+		this.cartDate = cartDate;
+	}
+
 	@Override
 	public String toString() {
 		return "CartVO [cartNum=" + cartNum + ", cartQuan=" + cartQuan + ", prodNum=" + prodNum + ", memberId="
-				+ memberId + "]";
+				+ memberId + ", cartDate=" + cartDate + "]";
 	}
+	
+	
+	
+
 	
 	
 	
