@@ -8,7 +8,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias type="com.j2kb.member.vo.MemberVO" alias="memberVO"></typeAlias>
 		<typeAlias type="com.j2kb.cart.vo.CartVO" alias="cartVO"></typeAlias>
 		<typeAlias type="com.j2kb.review.vo.ReviewVO" alias="ReviewVO"></typeAlias>
-		<typeAlias type="com.j2kb.product.vo.CartVO" alias="cartVO"></typeAlias>
+		<typeAlias type="com.j2kb.product.vo.ProductVO" alias="productVO"></typeAlias>
 	</typeAliases>
 	<environments default="development">
 		<environment id="development">
