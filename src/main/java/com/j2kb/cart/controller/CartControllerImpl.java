@@ -41,18 +41,13 @@ public class CartControllerImpl implements CartController{
 		return entity;
 	}
 	
-	//version2
-	@RequestMapping(method=RequestMethod.GET, path = "/cartlist2")
-	public Map<String, List> getCartList2(@RequestParam("memberId") String memberId) {
-		Map<String ,List> cartMap = cartService.getCartList2(memberId);
-		return cartMap;
-	}
-	
-	//version1
+
 	@RequestMapping(method=RequestMethod.GET, path = "/cartlist")
 	public List<Map<String, Object>> getCartList(@RequestParam("memberId") String memberId) {
 		List<Map<String, Object>> cartMap2 = cartService.getCartList(memberId);
 		return cartMap2;
 	}
+	
+
 	
 }

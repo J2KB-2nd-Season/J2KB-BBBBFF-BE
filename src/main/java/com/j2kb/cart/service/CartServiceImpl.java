@@ -29,7 +29,7 @@ public class CartServiceImpl implements CartService{
 
 	SimpleDateFormat fm;
 
-	
+	@Override
 	public void addToCart(CartVO cartVO) {
 		d= new Date();
 		fm = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -42,23 +42,9 @@ public class CartServiceImpl implements CartService{
 		cartVO.setProdNum(cartVO.getProdNum());
 		cartDAO.insertNewCart(cartVO);
 	}
-	//version2
-	public Map<String,List> getCartList2(String memberId){
-		
-		Map<String ,List> cartMap = new HashMap<String,List>();
-		List<CartVO> cartList= cartDAO.selectCartList(memberId);
-		if(cartList==null) {
-			return null;
-		}
-		
-		List<ProductVO> prodList = cartDAO.selectProductList2(memberId);
-		cartMap.put("cartList", cartList);
-		cartMap.put("prodList",prodList);
-		
-		return cartMap;
-	}
+
 	
-	//version1
+	@Override
 	public List<Map<String,Object>> getCartList(String memberId){
 		
 		List<Map<String, Object>> productList2 =  new ArrayList<Map<String, Object>>();

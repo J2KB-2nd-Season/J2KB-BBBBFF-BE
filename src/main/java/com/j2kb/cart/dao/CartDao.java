@@ -12,6 +12,5 @@ public interface CartDAO {
 	public int selectCurrentCartNum();
 	public void insertNewCart(CartVO cartVO);
 	public List<CartVO> selectCartList(String memberId);
-	public List<ProductVO> selectProductList2(String memberId);
 	public List<Map<String, Object>> selectProductList(String memberId);
 }

@@ -11,6 +11,5 @@ import com.j2kb.cart.vo.CartVO;
 public interface CartController {
 
 	public ResponseEntity<String> addToCart(CartVO cartVO);
-	public Map<String, List> getCartList2(String memberId);
 	public List<Map<String, Object>> getCartList(String memberId);
 }

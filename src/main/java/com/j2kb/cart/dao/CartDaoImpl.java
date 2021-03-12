@@ -39,6 +39,7 @@ public class CartDAOImpl implements CartDAO{
 		return sqlMapper;
 	}
 	
+	@Override
 	public void insertNewCart(CartVO cartVO) {
 		sqlMapper = getInstance();
 		SqlSession session = sqlMapper.openSession();
@@ -47,6 +48,7 @@ public class CartDAOImpl implements CartDAO{
 		session.close();
 	}
 	
+	@Override
 	public int selectCurrentCartNum() {
 		sqlMapper = getInstance();
 		SqlSession session = sqlMapper.openSession();
@@ -54,6 +56,7 @@ public class CartDAOImpl implements CartDAO{
 		return cartNum;
 	}
 	
+	@Override
 	public List<CartVO> selectCartList(String memberId){
 		sqlMapper = getInstance();
 		SqlSession session = sqlMapper.openSession();
@@ -61,13 +64,6 @@ public class CartDAOImpl implements CartDAO{
 		return cartList;
 	}
 
-	
-	public List<ProductVO> selectProductList2(String memberId){
-		sqlMapper = getInstance();
-		SqlSession session = sqlMapper.openSession();
-		List<ProductVO> productList = session.selectList("mapper.cart.selectProductList2", memberId);
-		return productList;
-	}
 
 	@Override
 	public List<Map<String, Object>> selectProductList(String memberId) {
