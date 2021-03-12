@@ -23,19 +23,20 @@
 	
 	<select id="selectCartList" resultMap = "cartResult">
 		<![CDATA[
-			SELECT * FROM cart
-			WHERE MEMBER_ID = {#memberId}
+			SELECT cart_num,cart_quan,prod_num,MEMBER_ID,cart_date FROM cart WHERE MEMBER_ID = #{memberId};
 		]]>
 	</select>
 	
-	<select id="selectSumCartList" resultMap = "cartResult">
-		<![CDATA[
-			SELECT sum(cart_quan),member_id,prod_num,cart_date
-			FROM cart
-			WHERE MEMBER_ID = {#memberId}
-			GROUP BY prod_num;
-		]]>
+	<select id="selectProductList" resultMap="productResult">
+	<![CDATA[
+		select prod_num, prod_name,prod_price,prod_stock,prod_image,prod_detail,category_num 
+		from product
+		join cart using(prod_num)
+		where member_id = #{memberId}
+		group by prod_num;
+	]]>
 	</select>
+	
 	
 	
 	<insert id="insertNewCart" parameterType="cartVO">

@@ -1,6 +1,7 @@
 package com.j2kb.cart.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -41,9 +42,9 @@ public class CartControllerImpl implements CartController{
 	}
 	
 	@RequestMapping(method=RequestMethod.GET, path = "/cartlist")
-	public List<CartVO> getCartList(@RequestParam("memberId") String memberId) {
-		List<CartVO> list= cartService.getCartList(memberId);
-		return list;
+	public Map<String, List> getCartList(@RequestParam("memberId") String memberId) {
+		Map<String ,List> cartMap = cartService.getCartList(memberId);
+		return cartMap;
 	}
 	
 	

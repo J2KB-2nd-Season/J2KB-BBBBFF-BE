@@ -1,6 +1,7 @@
 package com.j2kb.cart.dao;
 
 import java.io.Reader;
+import java.util.List;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -11,6 +12,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import com.j2kb.cart.vo.CartVO;
+import com.j2kb.member.vo.MemberVO;
+import com.j2kb.product.vo.ProductVO;
 
 
 
@@ -49,5 +52,18 @@ public class CartDAOImpl implements CartDAO{
 		return cartNum;
 	}
 	
+	public List<CartVO> selectCartList(String memberId){
+		sqlMapper = getInstance();
+		SqlSession session = sqlMapper.openSession();
+		List<CartVO> cartList = session.selectList("mapper.cart.selectCartList", memberId);
+		return cartList;
+	}
 
+	
+	public List<ProductVO> selectProductList(String memberId){
+		sqlMapper = getInstance();
+		SqlSession session = sqlMapper.openSession();
+		List<ProductVO> productList = session.selectList("mapper.cart.selectProductList", memberId);
+		return productList;
+	}
 }

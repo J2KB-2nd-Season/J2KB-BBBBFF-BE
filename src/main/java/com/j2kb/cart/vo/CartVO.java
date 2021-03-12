@@ -1,6 +1,7 @@
 package com.j2kb.cart.vo;
 
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 
 public class CartVO {
 	
@@ -8,14 +9,14 @@ public class CartVO {
 	private int cartQuan;
 	private int prodNum;
 	private String memberId;
-	private Timestamp cartDate;
+	private String cartDate;
 	
 	public CartVO() {
 
 	}
 	
 	
-	public CartVO(int cartNum, int cartQuan, int prodNum, String memberId, Timestamp cartDate) {
+	public CartVO(int cartNum, int cartQuan, int prodNum, String memberId, String cartDate) {
 		super();
 		this.cartNum = cartNum;
 		this.cartQuan = cartQuan;
@@ -49,10 +50,10 @@ public class CartVO {
 	public void setMemberId(String memberId) {
 		this.memberId = memberId;
 	}
-	public Timestamp getCartDate() {
+	public String getCartDate() {
 		return cartDate;
 	}
-	public void setCartDate(Timestamp cartDate) {
+	public void setCartDate(String cartDate) {
 		this.cartDate = cartDate;
 	}
 
