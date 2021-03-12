@@ -5,6 +5,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -24,13 +25,15 @@ public class CartServiceImpl implements CartService{
 	@Autowired
 	private CartDAO cartDAO;
 	
-	Date d = new Date();
+	Date d;
 
-	SimpleDateFormat fm = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	SimpleDateFormat fm;
 
-	String now = fm.format(d);
 	
 	public void addToCart(CartVO cartVO) {
+		d= new Date();
+		fm = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String now = fm.format(d);
 		int cartNum = cartDAO.selectCurrentCartNum();
 		cartVO.setCartNum(cartNum);
 		cartVO.setCartQuan(cartVO.getCartQuan());
@@ -39,8 +42,8 @@ public class CartServiceImpl implements CartService{
 		cartVO.setProdNum(cartVO.getProdNum());
 		cartDAO.insertNewCart(cartVO);
 	}
-	
-	public Map<String,List> getCartList(String memberId){
+	//version2
+	public Map<String,List> getCartList2(String memberId){
 		
 		Map<String ,List> cartMap = new HashMap<String,List>();
 		List<CartVO> cartList= cartDAO.selectCartList(memberId);
@@ -48,11 +51,21 @@ public class CartServiceImpl implements CartService{
 			return null;
 		}
 		
-		List<ProductVO> prodList = cartDAO.selectProductList(memberId);
+		List<ProductVO> prodList = cartDAO.selectProductList2(memberId);
 		cartMap.put("cartList", cartList);
 		cartMap.put("prodList",prodList);
 		
 		return cartMap;
+	}
+	
+	//version1
+	public List<Map<String,Object>> getCartList(String memberId){
+		
+		List<Map<String, Object>> productList2 =  new ArrayList<Map<String, Object>>();
+				
+		productList2 = cartDAO.selectProductList(memberId);
+		
+		return productList2;
 	}
 	
 }

@@ -9,7 +9,9 @@ public interface CartService {
 
 	public void addToCart(CartVO cartVO);
 
-	public Map<String, List> getCartList(String memberId);
+	public Map<String, List> getCartList2(String memberId);
+
+	public List<Map<String, Object>> getCartList(String memberId);
 
 	
 }

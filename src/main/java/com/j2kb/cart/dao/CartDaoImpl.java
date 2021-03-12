@@ -1,7 +1,9 @@
 package com.j2kb.cart.dao;
 
 import java.io.Reader;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -60,10 +62,19 @@ public class CartDAOImpl implements CartDAO{
 	}
 
 	
-	public List<ProductVO> selectProductList(String memberId){
+	public List<ProductVO> selectProductList2(String memberId){
 		sqlMapper = getInstance();
 		SqlSession session = sqlMapper.openSession();
-		List<ProductVO> productList = session.selectList("mapper.cart.selectProductList", memberId);
+		List<ProductVO> productList = session.selectList("mapper.cart.selectProductList2", memberId);
 		return productList;
+	}
+
+	@Override
+	public List<Map<String, Object>> selectProductList(String memberId) {
+		// TODO Auto-generated method stub
+		sqlMapper = getInstance();
+		SqlSession session = sqlMapper.openSession();
+		List<Map<String, Object>> productList2 = session.selectList("mapper.cart.selectProductList", memberId);
+		return productList2;
 	}
 }

@@ -27,7 +27,7 @@
 		]]>
 	</select>
 	
-	<select id="selectProductList" resultMap="productResult">
+	<select id="selectProductList2" resultMap="productResult">
 	<![CDATA[
 		select prod_num, prod_name,prod_price,prod_stock,prod_image,prod_detail,category_num 
 		from product
@@ -37,6 +37,13 @@
 	]]>
 	</select>
 	
+	<select id="selectProductList" resultType="java.util.LinkedHashMap">
+		select cart_num, prod_num, prod_name, prod_price, prod_image, prod_detail, cart_quan, cart_date
+		from product
+		join cart using(prod_num)
+		where member_id = #{memberId}
+		order by cart_date asc;
+	</select>
 	
 	
 	<insert id="insertNewCart" parameterType="cartVO">
