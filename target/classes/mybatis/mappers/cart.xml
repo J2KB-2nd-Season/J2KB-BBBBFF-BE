@@ -11,6 +11,8 @@
 		<result property="cartDate" column="cart_date" />
 	</resultMap>
 	
+	
+	
 	<select id="selectCartList" resultMap = "cartResult">
 		<![CDATA[
 			SELECT * FROM cart
