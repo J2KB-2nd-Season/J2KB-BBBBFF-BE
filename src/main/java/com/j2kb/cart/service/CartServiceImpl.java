@@ -47,11 +47,20 @@ public class CartServiceImpl implements CartService{
 	@Override
 	public List<Map<String,Object>> getCartList(String memberId){
 		
-		List<Map<String, Object>> productList2 =  new ArrayList<Map<String, Object>>();
+		List<Map<String, Object>> productList =  new ArrayList<Map<String, Object>>();
 				
-		productList2 = cartDAO.selectProductList(memberId);
+		productList = cartDAO.selectProductList(memberId);
 		
-		return productList2;
+		return productList;
+	}
+
+
+	@Override
+	public List<Map<String, Object>> getSumCartList(String memberId) {
+		
+		List<Map<String, Object>> cartSumList =  new ArrayList<Map<String, Object>>();
+		cartSumList = cartDAO.selectCartSumList(memberId);
+		return cartSumList;
 	}
 	
 }

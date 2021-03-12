@@ -12,4 +12,5 @@ public interface CartController {
 
 	public ResponseEntity<String> addToCart(CartVO cartVO);
 	public List<Map<String, Object>> getCartList(String memberId);
+	public List<Map<String, Object>> getSumCartList(String memberId);
 }

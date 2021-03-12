@@ -13,4 +13,5 @@ public interface CartDAO {
 	public void insertNewCart(CartVO cartVO);
 	public List<CartVO> selectCartList(String memberId);
 	public List<Map<String, Object>> selectProductList(String memberId);
+	public List<Map<String, Object>> selectCartSumList(String memberId);
 }

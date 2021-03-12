@@ -73,4 +73,13 @@ public class CartDAOImpl implements CartDAO{
 		List<Map<String, Object>> productList2 = session.selectList("mapper.cart.selectProductList", memberId);
 		return productList2;
 	}
+
+	@Override
+	public List<Map<String, Object>> selectCartSumList(String memberId) {
+		// TODO Auto-generated method stub
+		sqlMapper = getInstance();
+		SqlSession session = sqlMapper.openSession();
+		List<Map<String, Object>> cartSumList = session.selectList("mapper.cart.selectSumProductList", memberId);
+		return cartSumList;
+	}
 }
