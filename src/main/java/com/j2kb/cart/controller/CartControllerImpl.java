@@ -1,5 +1,7 @@
 package com.j2kb.cart.controller;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,12 +10,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.j2kb.cart.controller.CartControllerImpl;
 import com.j2kb.cart.service.CartService;
 import com.j2kb.cart.vo.CartVO;
-
 
 @RestController
 @RequestMapping("/api/cart")
@@ -37,4 +39,12 @@ public class CartControllerImpl implements CartController{
 		}
 		return entity;
 	}
+	
+	@RequestMapping(method=RequestMethod.GET, path = "/cartlist")
+	public List<CartVO> getCartList(@RequestParam("memberId") String memberId) {
+		List<CartVO> list= cartService.getCartList(memberId);
+		return list;
+	}
+	
+	
 }
