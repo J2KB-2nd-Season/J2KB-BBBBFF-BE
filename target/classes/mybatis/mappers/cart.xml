@@ -11,7 +11,15 @@
 		<result property="cartDate" column="cart_date" />
 	</resultMap>
 	
-	
+	<resultMap id="productResult" type="productVO">
+		<result property="prodNum" column="prod_num" />
+		<result property="prodName" column="prod_name" />
+		<result property="prodPrice" column="prod_price" />
+		<result property="prodStock" column="prod_stock" />
+		<result property="prodImage" column="prod_image" />
+		<result property="prodDetail" column="prod_detail" />
+		<result property="categoryNum" column="category_num" />
+	</resultMap>
 	
 	<select id="selectCartList" resultMap = "cartResult">
 		<![CDATA[
