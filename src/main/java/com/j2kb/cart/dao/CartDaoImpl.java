@@ -70,13 +70,6 @@ public class CartDAOImpl implements CartDAO{
 		return productList2;
 	}
 
-	@Override
-	public List<Map<String, Object>> selectCartSumList(String memberId) {
-		sqlMapper = getInstance();
-		SqlSession session = sqlMapper.openSession();
-		List<Map<String, Object>> cartSumList = session.selectList("mapper.cart.selectSumProductList", memberId);
-		return cartSumList;
-	}
 	
 	@Override
 	public int selectCount(CartVO cartVO) {

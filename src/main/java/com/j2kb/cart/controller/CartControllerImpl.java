@@ -47,11 +47,7 @@ public class CartControllerImpl implements CartController{
 		return cartMap;
 	}
 	
-	@RequestMapping(method=RequestMethod.GET, path = "/sumCartList")
-	public List<Map<String, Object>> getSumCartList(@RequestParam("memberId") String memberId) {
-		List<Map<String, Object>> cartSumMap = cartService.getSumCartList(memberId);
-		return cartSumMap;
-	}
+
 	
 
 	

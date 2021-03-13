@@ -11,7 +11,6 @@ public interface CartService {
 
 	public List<Map<String, Object>> getCartList(String memberId);
 
-	public List<Map<String, Object>> getSumCartList(String memberId);
 
 	
 }

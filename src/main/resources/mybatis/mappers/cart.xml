@@ -45,14 +45,6 @@
 		order by cart_date asc;
 	</select>
 	
-	<select id="selectSumProductList" resultType="java.util.LinkedHashMap">
-		select prod_num, prod_name, prod_price, prod_stock, prod_image, prod_detail,cart_num, sum(cart_quan) cart_quan, cart_date
-		from product
-		join cart using(prod_num)
-		where MEMBER_ID = #{memberId}
-		group by prod_num
-		order by cart_date asc;
-	</select>
 	
 	<insert id="insertNewCart" parameterType="cartVO">
 		<![CDATA[

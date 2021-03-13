@@ -64,12 +64,5 @@ public class CartServiceImpl implements CartService{
 	}
 
 
-	@Override
-	public List<Map<String, Object>> getSumCartList(String memberId) {
-		
-		List<Map<String, Object>> cartSumList =  new ArrayList<Map<String, Object>>();
-		cartSumList = cartDAO.selectCartSumList(memberId);
-		return cartSumList;
-	}
 	
 }
