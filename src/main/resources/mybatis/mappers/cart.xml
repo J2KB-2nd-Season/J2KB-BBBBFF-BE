@@ -60,12 +60,35 @@
 		]]>
 	</insert>
 	
-	<select id="selectCurrentCartNum" resultType="int">
+	<select id="selectNextCartNum" resultType="int">
 		<![CDATA[
 			SELECT IFNULL(MAX(cart_num),0) + 1
 			FROM cart
 		]]>
 	</select>
+	
+	<select id="selectCurrentCartNum" parameterType="cartVO" resultType="int">
+		<![CDATA[
+			select cart_num
+			from cart
+			where MEMBER_ID = #{memberId} and prod_num = #{prodNum};
+		]]>
+	</select>
+	
+	<select id="selectCount" parameterType="cartVO" resultType="int">
+		<![CDATA[
+			SELECT count(*)
+			FROM cart
+			where prod_num = #{prodNum} and MEMBER_ID = #{memberId};
+		]]>
+	</select>
+	
+	<update id="updatePlusQuan" parameterType="cartVO">
+	<![CDATA[
+			update cart set cart_quan = cart_quan + #{cartQuan}
+			where MEMBER_ID = #{memberId} and prod_num = #{prodNum};
+		]]>
+	</update>
 	
 	
 </mapper>

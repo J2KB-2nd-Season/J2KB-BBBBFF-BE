@@ -49,10 +49,10 @@ public class CartDAOImpl implements CartDAO{
 	}
 	
 	@Override
-	public int selectCurrentCartNum() {
+	public int selectNextCartNum() {
 		sqlMapper = getInstance();
 		SqlSession session = sqlMapper.openSession();
-		int cartNum = session.selectOne("mapper.cart.selectCurrentCartNum");
+		int cartNum = session.selectOne("mapper.cart.selectNextCartNum");
 		return cartNum;
 	}
 	
@@ -82,4 +82,32 @@ public class CartDAOImpl implements CartDAO{
 		List<Map<String, Object>> cartSumList = session.selectList("mapper.cart.selectSumProductList", memberId);
 		return cartSumList;
 	}
+	
+	@Override
+	public int selectCount(CartVO cartVO) {
+		sqlMapper = getInstance();
+		SqlSession session = sqlMapper.openSession();
+		int count = session.selectOne("mapper.cart.selectCount",cartVO);
+		return count;
+	}
+
+	@Override
+	public int selectCurrentCartNum(CartVO cartVO) {
+		sqlMapper = getInstance();
+		SqlSession session = sqlMapper.openSession();
+		int cartNum = session.selectOne("mapper.cart.selectCurrentCartNum",cartVO);
+		return cartNum;
+	}
+
+	@Override
+	public void updateCartQuan(CartVO cartVO) {
+		sqlMapper = getInstance();
+		SqlSession session = sqlMapper.openSession();
+		session.selectOne("mapper.cart.updatePlusQuan",cartVO);
+		session.commit();
+		session.close();
+		
+	}
+	
+	
 }
