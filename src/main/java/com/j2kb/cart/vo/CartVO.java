@@ -1,8 +1,5 @@
 package com.j2kb.cart.vo;
 
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
-
 public class CartVO {
 	
 	private int cartNum;

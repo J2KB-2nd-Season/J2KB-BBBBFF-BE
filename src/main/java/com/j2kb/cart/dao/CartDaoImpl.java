@@ -1,7 +1,6 @@
 package com.j2kb.cart.dao;
 
 import java.io.Reader;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -14,8 +13,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import com.j2kb.cart.vo.CartVO;
-import com.j2kb.member.vo.MemberVO;
-import com.j2kb.product.vo.ProductVO;
 
 
 
@@ -67,7 +64,6 @@ public class CartDAOImpl implements CartDAO{
 
 	@Override
 	public List<Map<String, Object>> selectProductList(String memberId) {
-		// TODO Auto-generated method stub
 		sqlMapper = getInstance();
 		SqlSession session = sqlMapper.openSession();
 		List<Map<String, Object>> productList2 = session.selectList("mapper.cart.selectProductList", memberId);
@@ -76,7 +72,6 @@ public class CartDAOImpl implements CartDAO{
 
 	@Override
 	public List<Map<String, Object>> selectCartSumList(String memberId) {
-		// TODO Auto-generated method stub
 		sqlMapper = getInstance();
 		SqlSession session = sqlMapper.openSession();
 		List<Map<String, Object>> cartSumList = session.selectList("mapper.cart.selectSumProductList", memberId);
