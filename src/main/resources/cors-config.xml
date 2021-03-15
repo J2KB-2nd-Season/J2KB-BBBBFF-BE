@@ -5,9 +5,9 @@
     xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 	
-	<!-- 아래 주소는 rest api 접근 허용 -->
+	<!-- 아래 주소는 rest api 요청 허용 -->
 	<mvc:cors>
-		<mvc:mapping path="/**" allowed-origins="http://localhost:8081, http://13.125.205.182, http://101.101.163.129, http://118.67.128.131:8080 "  />
+		<mvc:mapping path="/**" allowed-origins="http://localhost:8080, http://localhost:8081, http://13.125.205.182:80, http://101.101.163.129:1024, http://118.67.128.131:8080 "  />
 	</mvc:cors>
 	
 </beans>
