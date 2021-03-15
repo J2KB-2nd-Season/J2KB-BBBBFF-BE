@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.review">
+	<resultMap id="reviewResult" type="ReviewVO">
+		<result property="reviewNum" column="REVIEW_NUM" />
+		<result property="reviewTitle" column="REVIEW_TITLE" />
+		<result property="reviewContent" column="REVIEW_CONTENT" />
+		<result property="reviewImage" column="REVIEW_IMAGE" />
+		<result property="memberId" column="MEMBER_ID" />
+		<result property="prodNum" column="PROD_NUM" />
+		<result property="reviewScore" column="REVIEW_SCORE" />
+	</resultMap>
+	
+	<select id="selectReviewList" resultMap = "reviewResult">
+		<![CDATA[
+			SELECT * FROM REVIEW
+			WHERE MEMBER_ID = {#memberId}
+		]]>
+	</select>
+	
+	<insert id="writeReview" parameterType="ReviewVO">
+		<![CDATA[
+			INSERT INTO REVIEW(REVIEW_NUM,REVIEW_TITLE,REVIEW_CONTENT,REVIEW_IMAGE,MEMBER_ID,PROD_NUM,REVIEW_SCORE ) 
+			VALUES(#{reviewNum},#{reviewTitle},#{reviewContent},#{reviewImage},#{memberId}, #{prodNum}, #{reviewScore})
+		]]>
+	</insert>
+	
+</mapper>

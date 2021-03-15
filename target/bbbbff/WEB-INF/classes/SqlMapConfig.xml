@@ -6,6 +6,9 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.j2kb.member.vo.MemberVO" alias="memberVO"></typeAlias>
+		<typeAlias type="com.j2kb.cart.vo.CartVO" alias="cartVO"></typeAlias>
+		<typeAlias type="com.j2kb.review.vo.ReviewVO" alias="ReviewVO"></typeAlias>
+		<typeAlias type="com.j2kb.product.vo.ProductVO" alias="productVO"></typeAlias>
 	</typeAliases>
 	<environments default="development">
 		<environment id="development">
@@ -20,5 +23,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	</environments>
 	<mappers>
 		<mapper resource="mybatis/mappers/member.xml"/>
+		<mapper resource="mybatis/mappers/cart.xml"/>
+		<mapper resource="mybatis/mappers/review.xml"/>
 	</mappers>
 </configuration>
