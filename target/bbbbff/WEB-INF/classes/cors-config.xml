@@ -7,7 +7,13 @@
 
 	<!-- 모두 허용 -->
  	<mvc:cors>
-        <mvc:mapping path="/**" allowed-origins="*"/>
+        <mvc:mapping path="/**" allowed-origins="*"  allow-credentials="true"/>
+    </mvc:cors>
+    
+    <!-- 특정 도메인만 허용 -->
+    <mvc:cors>
+        <mvc:mapping path="/**" allowed-origins="http://13.125.205.182, http://13.125.205.182:80"
+		allow-credentials="true"/>
     </mvc:cors>
     
     
