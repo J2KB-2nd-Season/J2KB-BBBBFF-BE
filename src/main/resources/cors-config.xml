@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 모두 허용 -->
+ 	<mvc:cors>
+        <mvc:mapping path="/**" allowed-origins="*"  allow-credentials="true"/>
+    </mvc:cors>
+    
+    <!-- 특정 도메인만 허용 -->
+    <mvc:cors>
+        <mvc:mapping path="/**" allowed-origins="http://13.125.205.182, http://13.125.205.182:80"
+		allow-credentials="true"/>
+    </mvc:cors>
+    
+    
+
+</beans>
+
+
