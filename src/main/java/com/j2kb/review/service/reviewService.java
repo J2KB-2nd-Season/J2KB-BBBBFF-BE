@@ -1,5 +1,9 @@
 package com.j2kb.review.service;
 
-public interface reviewService {
+import com.j2kb.review.vo.ReviewVO;
+
+public interface ReviewService {
+	
+	public void writeReview(ReviewVO ReviewVO );
 
 }
