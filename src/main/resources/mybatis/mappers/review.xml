@@ -11,27 +11,10 @@
 		<result property="reviewScore" column="REVIEW_SCORE" />
 	</resultMap>
 	
-	<resultMap id="prodReview" type="ReviewVO">
-		<result property="reviewNum" column="REVIEW_NUM" />
-		<result property="reviewTitle" column="REVIEW_TITLE" />
-		<result property="reviewContent" column="REVIEW_CONTENT" />
-		<result property="reviewImage" column="REVIEW_IMAGE" />
-		<result property="memberId" column="MEMBER_ID" />
-		<result property="prodNum" column="PROD_NUM" />
-		<result property="reviewScore" column="REVIEW_SCORE" />
-	</resultMap>
-	
 	<select id="selectReviewList" resultMap = "reviewResult">
 		<![CDATA[
 			SELECT * FROM REVIEW
 			WHERE MEMBER_ID = {#memberId}
-		]]>
-	</select>
-	
-	<select id="selectProdReview" resultMap = "prodReview">
-		<![CDATA[
-			SELECT * FROM REVIEW
-			WHERE PROD_NUM = {#prodNum}
 		]]>
 	</select>
 	
