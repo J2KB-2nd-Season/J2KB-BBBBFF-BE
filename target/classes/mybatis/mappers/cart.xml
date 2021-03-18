@@ -83,10 +83,10 @@
 	</update>
 	
 	
-	<delete id="deleteCart" parameterType="String">
+	<delete id="deleteCart" parameterType="HashMap">
 	<![CDATA[
 			delete from cart
-			where cart_num = #{cartNum};
+			where MEMBER_ID = #{memberId} and prod_num = #{prodNum};
 		]]>
 	</delete>
 	
