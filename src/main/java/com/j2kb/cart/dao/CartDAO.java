@@ -1,5 +1,6 @@
 package com.j2kb.cart.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import com.j2kb.cart.vo.CartVO;
@@ -14,5 +15,5 @@ public interface CartDAO {
 	public int selectCount(CartVO cartVO);
 	public int selectCurrentCartNum(CartVO cartVO);
 	public void updateCartQuan(CartVO cartVO);
-	public void deleteCart(CartVO cartVO);
+	public void deleteCart(HashMap map);
 }
