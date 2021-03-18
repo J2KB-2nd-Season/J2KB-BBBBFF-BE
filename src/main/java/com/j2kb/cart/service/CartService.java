@@ -1,5 +1,6 @@
 package com.j2kb.cart.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -11,6 +12,7 @@ public interface CartService {
 
 	public List<Map<String, Object>> getCartList(String memberId);
 
+	public void deleteCart(HashMap map);
 
 	
 }
