@@ -14,5 +14,5 @@ public interface CartDAO {
 	public int selectCount(CartVO cartVO);
 	public int selectCurrentCartNum(CartVO cartVO);
 	public void updateCartQuan(CartVO cartVO);
-
+	public void deleteCart(CartVO cartVO);
 }
