@@ -83,4 +83,11 @@
 	</update>
 	
 	
+	<delete id="deleteCart" parameterType="HashMap">
+	<![CDATA[
+			delete from cart
+			where MEMBER_ID = #{memberId} and prod_num = #{prodNum};
+		]]>
+	</delete>
+	
 </mapper>

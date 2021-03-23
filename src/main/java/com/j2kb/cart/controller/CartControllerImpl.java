@@ -1,5 +1,6 @@
 package com.j2kb.cart.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -47,7 +48,21 @@ public class CartControllerImpl implements CartController{
 		return cartMap;
 	}
 	
-
+	@RequestMapping(method=RequestMethod.DELETE)
+	public ResponseEntity<String> deleteCart(@RequestParam("memberId")String memberId, @RequestParam("prodNum")String prodNum){
+		ResponseEntity<String> entity = null;
+		try {
+			HashMap<String, String> map = new HashMap<String,String>();
+			map.put("memberId",memberId);
+			map.put("prodNum",prodNum);
+			cartService.deleteCart(map);
+			entity = new ResponseEntity<String>("success",HttpStatus.OK);
+		}catch(Exception e) {
+			e.printStackTrace();
+			entity = new ResponseEntity<String>(e.getMessage(),HttpStatus.BAD_REQUEST);
+		}
+		return entity;
+	}
 	
 
 	

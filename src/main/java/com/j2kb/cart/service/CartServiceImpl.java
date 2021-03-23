@@ -6,6 +6,7 @@ package com.j2kb.cart.service;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -61,6 +62,11 @@ public class CartServiceImpl implements CartService{
 		productList = cartDAO.selectProductList(memberId);
 		
 		return productList;
+	}
+	
+	@Override
+	public void deleteCart(HashMap map) {
+		cartDAO.deleteCart(map);
 	}
 
 

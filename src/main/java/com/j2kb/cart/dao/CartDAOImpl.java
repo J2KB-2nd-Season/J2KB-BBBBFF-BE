@@ -1,6 +1,7 @@
 package com.j2kb.cart.dao;
 
 import java.io.Reader;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -97,5 +98,13 @@ public class CartDAOImpl implements CartDAO{
 		
 	}
 	
+	@Override
+	public void deleteCart(HashMap map) {
+		sqlMapper = getInstance();
+		SqlSession session = sqlMapper.openSession();
+		session.delete("mapper.cart.deleteCart",map);
+		session.commit();
+		session.close();
+	}
 	
 }
