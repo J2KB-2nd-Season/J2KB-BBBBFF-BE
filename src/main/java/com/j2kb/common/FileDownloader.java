@@ -18,14 +18,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/download")
 public class FileDownloader {
 
-	@GetMapping(value="image/{imageNumber}", produces = MediaType.IMAGE_JPEG_VALUE)
-	public ResponseEntity<byte[]> fileDowload(@PathVariable("imageNumber") String imageNumber){
+	@GetMapping(value="image/{imagePath}", produces = MediaType.IMAGE_JPEG_VALUE)
+	public ResponseEntity<byte[]> fileDowload(@PathVariable("imagePath") String imagePath){
 		InputStream imageStream = null;
 		byte[] imageByteArray = null;
 		ResponseEntity<byte[]> entity = null;
 		try {
 			// 여기다가 서버 이미지 폴더 경로 넣어주시면 됩니다..! 
-			imageStream = new FileInputStream("C:\\Users\\ME\\Downloads\\" + imageNumber + ".jpg");
+			imageStream = new FileInputStream("C:\\Users\\ME\\Downloads\\" + imagePath + ".jpg");
 			imageByteArray = IOUtils.toByteArray(imageStream);
 			entity = new ResponseEntity<byte[]>(imageByteArray,HttpStatus.OK);
 		} catch (IOException e) {
