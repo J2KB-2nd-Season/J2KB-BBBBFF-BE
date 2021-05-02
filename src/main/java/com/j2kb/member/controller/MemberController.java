@@ -18,6 +18,4 @@ public interface MemberController {
 	public boolean isValidateId(String memberId);
 	public String changeToRandomPassword(Map<String,String> param);	
 	public String findByEmail(Map<String,String> param);
-
-
 }

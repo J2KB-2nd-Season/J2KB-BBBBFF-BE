@@ -49,13 +49,6 @@ public class AuthController {
 		String name = (vo==null || session == null) ? "" : vo.getMember_name();
 		int role = (vo==null || session == null) ? -1 : memberService.getMemberRole(vo);
 		
-		
-//		HttpSession session = request.getSession();
-//		Boolean isAdmin = (Boolean) session.getAttribute("isAdmin");
-//		Boolean isAuth = (Boolean)session.getAttribute("isAuth");
-//		String email = (String)session.getAttribute("email");
-//		String name = (String)session.getAttribute("name");
-//		Integer role = (Integer)session.getAttribute("role");
 
 		result.put("isAdmin",isAdmin);
 		result.put("isAuth",isAuth);
