@@ -2,7 +2,6 @@ package com.j2kb.member.controller;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -45,7 +44,6 @@ public class MemberControllerImpl implements MemberController {
 	@RequestMapping(method = RequestMethod.POST, path = "/join")
 	public Boolean addMember(@RequestBody MemberVO memberVO) throws Exception {
 		memberService.addMember(memberVO);
-		
 		return true;
 	}
 
